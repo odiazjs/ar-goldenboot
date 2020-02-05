@@ -1,0 +1,18 @@
+{
+  "name": "balondioro",
+  "version": "1.0.0",
+  "description": "ar project",
+  "main": "app.js",
+  "scripts": {
+    "start": "http-server -c-1 -p 7000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ar"
+  ],
+  "author": "odiaz.dw@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.12.0"
+  }
+}
