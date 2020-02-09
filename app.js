@@ -20,11 +20,13 @@ AFRAME.registerComponent("markerhandler", {
     // every click, we make our model grow in size :)
     model.addEventListener("click", function(ev, target) {
       const intersectedElement = ev && ev.detail && ev.detail.intersection;
+      var marker = document.querySelector("a-marker");
 
-      if (!video) {
+      if (marker.object3D && marker.object3D.visible == true && !video) {
         const videoEl = document.createElement("a-video");
         const random = Math.floor(Math.random() * 100);
         videoEl.setAttribute("src", `/assets/pepsi-demo.mp4?random=${random}`);
+        videoEl.setAttribute('id', 'video');
         videoEl.setAttribute('autoplay', 'true');
         videoEl.setAttribute('loop', 'true');
         videoEl.setAttribute("width", "16");
