@@ -31,8 +31,8 @@ AFRAME.registerComponent("markerhandler", {
         videoEl.setAttribute('loop', 'true');
         videoEl.setAttribute("width", "6");
         videoEl.setAttribute("height", "4");
-        videoEl.setAttribute("position", "-1 1 15");
-        videoEl.setAttribute("opacity", "1");
+        videoEl.setAttribute("position", "-1 1 -5");
+        videoEl.setAttribute("opacity", "0.8");
         model.appendChild(videoEl);
       }
 
