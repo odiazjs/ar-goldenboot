@@ -29,10 +29,10 @@ AFRAME.registerComponent("markerhandler", {
         videoEl.setAttribute('id', 'video');
         videoEl.setAttribute('autoplay', 'false');
         videoEl.setAttribute('loop', 'true');
-        videoEl.setAttribute("width", "4");
-        videoEl.setAttribute("height", "2");
-        videoEl.setAttribute("position", "-1 2 10");
-        videoEl.setAttribute("opacity", "0.9");
+        videoEl.setAttribute("width", "5");
+        videoEl.setAttribute("height", "4");
+        videoEl.setAttribute("position", "-1 1 10");
+        videoEl.setAttribute("opacity", "1");
         model.appendChild(videoEl);
       }
 
