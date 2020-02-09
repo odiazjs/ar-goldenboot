@@ -22,17 +22,18 @@ AFRAME.registerComponent("markerhandler", {
       const intersectedElement = ev && ev.detail && ev.detail.intersection;
       var marker = document.querySelector("a-marker");
 
-      if (marker.object3D && marker.object3D.visible == true && !video) {
+      if (marker.object3D && marker.object3D.visible == true && !document.querySelector("#video")) {
         const videoEl = document.createElement("a-video");
         const random = Math.floor(Math.random() * 100);
         videoEl.setAttribute("src", `/assets/pepsi-demo.mp4?random=${random}`);
         videoEl.setAttribute('id', 'video');
-        videoEl.setAttribute('autoplay', 'true');
+        videoEl.setAttribute('autoplay', 'false');
         videoEl.setAttribute('loop', 'true');
-        videoEl.setAttribute("width", "16");
-        videoEl.setAttribute("height", "9");
-        videoEl.setAttribute("position", "0 0 20");
+        videoEl.setAttribute("width", "8");
+        videoEl.setAttribute("height", "5");
+        videoEl.setAttribute("position", "-4 0 5");
         videoEl.setAttribute("opacity", "0.6");
+        videoEl.style.border = '2px solid white';
         model.appendChild(videoEl);
       }
 
