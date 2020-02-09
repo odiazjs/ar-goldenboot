@@ -5187,9 +5187,9 @@ AFRAME.registerComponent('arjs-anchor', {
 
         // honor object visibility
         if (_this.data.changeMatrixMode === 'modelViewMatrix') {
-            _this.el.object3D.visible = false
+			_this.el.object3D.visible = false
         } else if (_this.data.changeMatrixMode === 'cameraTransformMatrix') {
-            _this.el.sceneEl.object3D.visible = false
+			_this.el.sceneEl.object3D.visible = false
         } else console.assert(false)
 
         // trick to wait until arjsSystem is isReady
@@ -5298,17 +5298,24 @@ AFRAME.registerComponent('arjs-anchor', {
         //////////////////////////////////////////////////////////////////////////////
         if (_this._arAnchor.parameters.changeMatrixMode === 'modelViewMatrix') {
             var wasVisible = _this.el.object3D.visible
-            _this.el.object3D.visible = this._arAnchor.object3d.visible
+			_this.el.object3D.visible = this._arAnchor.object3d.visible
         } else if (_this._arAnchor.parameters.changeMatrixMode === 'cameraTransformMatrix') {
             var wasVisible = _this.el.sceneEl.object3D.visible
-            _this.el.sceneEl.object3D.visible = this._arAnchor.object3d.visible
+			_this.el.sceneEl.object3D.visible = this._arAnchor.object3d.visible
         } else console.assert(false)
+
+		// emit Camera markerFound markerLost
+        // if (_this._arAnchor.sceneEl.object3d.visible === true && wasVisible === false) {
+		// 	_this.el.emit('cameraMarkerFound')
+        // } else if (_this._arAnchor.sceneEl.object3d.visible === false && wasVisible === true) {
+		// 	_this.el.emit('cameraMarkerLost')
+        // }
 
         // emit markerFound markerLost
         if (_this._arAnchor.object3d.visible === true && wasVisible === false) {
-            _this.el.emit('markerFound')
+			_this.el.emit('markerFound')
         } else if (_this._arAnchor.object3d.visible === false && wasVisible === true) {
-            _this.el.emit('markerLost')
+			_this.el.emit('markerLost')
         }
 
 
@@ -5394,6 +5401,7 @@ AFRAME.registerPrimitive('a-marker-camera', AFRAME.utils.extendDeep({}, AFRAME.p
         'preset': 'arjs-anchor.preset',
         'min-confidence': 'arjs-anchor.minConfidence',
         'marker-helpers': 'arjs-anchor.markerhelpers',
+        
     }
 }))
 //////////////////////////////////////////////////////////////////////////////

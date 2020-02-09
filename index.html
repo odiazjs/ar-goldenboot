@@ -3,39 +3,52 @@
 
 <head>
   <title>
-    balondioro
+    AR Demo
   </title>
 
   <meta name="description" content="balondioro">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
-  <!-- aframe extras -->
-  <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.12.4/dist/aframe-extras.min.js"></script>
-  <!-- webcomponentsjs -->
-  <script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/v0.7.24/webcomponents-lite.min.js"></script>
-  <!-- LRNWebComponents -->
-  <link href="https://cdn.rawgit.com/LRNWebComponents/build/0.2.0/build/default/build.html" rel="import" />
-  <!-- include ar.js for A-Frame -->
-  <script src="/aframe.js"></script>
+  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/dev/aframe/build/aframe-ar.js"></script>
+
+  <script src="app.js"></script>
+
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
-  <div>Prueba de texto overlay</div>
-  <a-scene embedded arjs>
-    <a-entity scale=".1 .1 .1">
-      <a-entity gltf-model="assets/scene.gltf" scale="-1 1 1">
-        <!-- Using the asset management system. -->
+  <!-- <a-entity id="3dmodel" scale=".1 .1 .1" visible="true">
+      <a-entity gltf-model="assets/vendingmachine/scene.gltf" scale="-2 2 2">
+        <a-animation attribute="rotation"
+          dur="9000"
+          to="0 360 0"
+          repeat="indefinite"
+          easing="linear">
+        </a-animation>
         <a-video id="video" autoplay="false" animation="property: visible; to: true; startEvents: materialtextureloaded"
-          src="/assets/testvid1.mp4" width="16" height="9" position="0 0 -20" opacity="0.6">
+          src="/assets/pepsi-demo.mp4" width="16" height="9" position="0 0 -10" opacity="0.6">
         </a-video>
       </a-entity>
-    </a-entity>
-    <a-marker-camera type='pattern' url='assets/pattern-messideoro.patt'></a-marker-camera>
-    <!-- <a-sky color="#ECECEC"></a-sky> -->
+    </a-entity> -->
+
+
+  <!-- <a-marker type='pattern' url='assets/pattern-p.patt'></a-marker> -->
+  <!-- <a-marker-camera id="ar-camera" type='pattern' url='assets/pattern-p.patt'></a-marker-camera> -->
+
+  <a-scene embedded arjs='sourceType: webcam;'>
+    <a-marker id="a-marker" markerhandler emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='assets/pattern-p.patt'>
+      <a-entity id="model" gltf-model="assets/vendingmachine/scene.gltf" rotation="90 180 0" scale="-2 2 2">
+        <!-- <a-animation attribute="rotation" dur="9000" to="0 360 0" repeat="indefinite" easing="linear"> -->
+        </a-animation>
+        <!-- <a-video videohandler id="video" autoplay="false" visible="false"
+          src="/assets/" width="16" height="9" position="0 0 20" opacity="0.6">
+        </a-video> -->
+    </a-marker>
+    <a-camera-static />
+  </a-scene>
 
   </a-scene>
-  <script src="app.js"></script>
+  
 </body>
 
 </html>
