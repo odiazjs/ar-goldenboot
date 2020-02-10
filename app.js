@@ -1,13 +1,5 @@
 AFRAME.registerComponent("markerhandler", {
   init: function() {
-    // setInterval(() => {
-    //   var marker = document.querySelector("a-marker");
-    //   if (marker.object3D && marker.object3D.visible == true) {
-    //     console.log("marker found!");
-    //   } else {
-    //     console.log("marker lost!");
-    //   }
-    // }, 250);
 
     const aMarker = document.querySelector("a-marker");
     const model = document.querySelector("#model");

@@ -17,32 +17,16 @@
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
-  <!-- <a-entity id="3dmodel" scale=".1 .1 .1" visible="true">
-      <a-entity gltf-model="assets/vendingmachine/scene.gltf" scale="-2 2 2">
-        <a-animation attribute="rotation"
-          dur="9000"
-          to="0 360 0"
-          repeat="indefinite"
-          easing="linear">
-        </a-animation>
-        <a-video id="video" autoplay="false" animation="property: visible; to: true; startEvents: materialtextureloaded"
-          src="/assets/pepsi-demo.mp4" width="16" height="9" position="0 0 -10" opacity="0.6">
-        </a-video>
-      </a-entity>
-    </a-entity> -->
-
-
-  <!-- <a-marker type='pattern' url='assets/pattern-p.patt'></a-marker> -->
-  <!-- <a-marker-camera id="ar-camera" type='pattern' url='assets/pattern-p.patt'></a-marker-camera> -->
-
-  <a-scene embedded arjs='sourceType: webcam;'>
+  <a-scene embedded arjs='sourceType: webcam;' renderer="precision: medium;">
+    <a-assets>
+        <a-asset-item id="lata" src="/assets/lata/scene.gltf"></a-asset-item>
+    </a-assets>
     <a-marker id="a-marker" markerhandler emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='assets/pattern-image.patt'>
-      <a-entity id="model" gltf-model="/assets/lata/pepsi-lata-resized2.gltf" rotation="90 180 0" scale="-12 12 12">
-        <!-- <a-video videohandler id="video" autoplay="false" visible="false"
-          src="/assets/" width="16" height="9" position="0 0 20" opacity="0.6">
-        </a-video> -->
+      <a-entity id="model" gltf-model="/assets/lata/scene.gltf" rotation="90 180 0 270" scale="-12 12 12">
     </a-marker>
     <a-camera-static />
+    <a-light type="ambient" color="white"></a-light>
+    <a-light type="point" intensity="4" position="1 2 2"></a-light>
   </a-scene>
 
   </a-scene>
