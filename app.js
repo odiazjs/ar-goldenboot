@@ -13,7 +13,7 @@ AFRAME.registerComponent("markerhandler", {
       if (marker.object3D && marker.object3D.visible == true && !document.querySelector("#video")) {
         const videoEl = document.createElement("a-video");
         const random = Math.floor(Math.random() * 100);
-        videoEl.setAttribute("src", `/assets/pepsi-demo.mp4?random=${random}`);
+        videoEl.setAttribute("src", `/assets/pepsivid.mp4?random=${random}`);
         videoEl.setAttribute('id', 'video');
         videoEl.setAttribute('autoplay', 'true');
         videoEl.setAttribute('loop', 'false');
