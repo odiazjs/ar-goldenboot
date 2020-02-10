@@ -27,8 +27,8 @@ AFRAME.registerComponent("markerhandler", {
         const random = Math.floor(Math.random() * 100);
         videoEl.setAttribute("src", `/assets/pepsi-demo.mp4?random=${random}`);
         videoEl.setAttribute('id', 'video');
-        videoEl.setAttribute('autoplay', 'false');
-        videoEl.setAttribute('loop', 'true');
+        videoEl.setAttribute('autoplay', 'true');
+        videoEl.setAttribute('loop', 'false');
         videoEl.setAttribute("width", "0.6");
         videoEl.setAttribute("height", "0.3");
         videoEl.setAttribute("position", "0 0 1");
