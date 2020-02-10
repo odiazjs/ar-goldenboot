@@ -29,12 +29,15 @@ AFRAME.registerComponent("markerhandler", {
         videoEl.setAttribute('id', 'video');
         videoEl.setAttribute('autoplay', 'false');
         videoEl.setAttribute('loop', 'true');
-        videoEl.setAttribute("width", "2");
-        videoEl.setAttribute("height", "1");
-        videoEl.setAttribute("position", "0 0 0");
-        videoEl.setAttribute("rotation", "90 180 0");
+        videoEl.setAttribute("width", "4");
+        videoEl.setAttribute("height", "2");
+        videoEl.setAttribute("position", "0 1 1");
         videoEl.setAttribute("opacity", "1");
-        aMarker.appendChild(videoEl);
+        //videoEl.setAttribute("scale", "2 2 2");
+        model.setAttribute("opacity", "0.6");
+        model.setAttribute("scale", "-.6 .6 .6");
+        model.setAttribute("position", "0 1 0");
+        model.appendChild(videoEl);
       }
 
     });

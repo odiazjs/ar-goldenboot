@@ -37,10 +37,9 @@
 
   <a-scene embedded arjs='sourceType: webcam;'>
     <a-marker id="a-marker" markerhandler emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='assets/pattern-image.patt'>
-      <a-entity id="model" position="1 1 1"
-        gltf-model="/assets/lata/scene.gltf" rotation="90 180 0" scale=".005 .005 .005">
-        <!-- <a-animation attribute="rotation" dur="9000" to="90 -90 90" repeat="indefinite" easing="linear">
-        </a-animation> -->
+      <a-entity id="model" gltf-model="/assets/vendingmachine/scene.gltf" rotation="90 180 0" scale="-.8 .8 .8">
+        <!-- <a-animation attribute="rotation" dur="9000" to="0 360 0" repeat="indefinite" easing="linear"> -->
+        </a-animation>
         <!-- <a-video videohandler id="video" autoplay="false" visible="false"
           src="/assets/" width="16" height="9" position="0 0 20" opacity="0.6">
         </a-video> -->
