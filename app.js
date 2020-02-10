@@ -5,10 +5,6 @@ AFRAME.registerComponent("markerhandler", {
     const model = document.querySelector("#model");
     const video = document.querySelector("#video");
 
-    aMarker.addEventListener("click", ev => {
-      console.log("click on model - ", ev);
-    });
-
     // every click, we make our model grow in size :)
     model.addEventListener("click", function(ev, target) {
       const intersectedElement = ev && ev.detail && ev.detail.intersection;
@@ -27,6 +23,9 @@ AFRAME.registerComponent("markerhandler", {
         videoEl.setAttribute("opacity", "1");
         model.setAttribute("opacity", "0.6");
         model.appendChild(videoEl);
+
+        const element =  document.querySelector('.social-btns')
+        element.classList.add('animated', 'bounce', 'infinite', 'fast');
       }
 
     });

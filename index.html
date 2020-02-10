@@ -9,6 +9,10 @@
   <meta name="description" content="balondioro">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="animate.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
   <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
   <script src="/aframe.js"></script>
 
@@ -19,10 +23,18 @@
 <body style='margin : 0px; overflow: hidden;'>
   <a-scene embedded arjs='sourceType: webcam;' renderer="precision: medium;">
     <a-assets>
-        <a-asset-item id="lata" src="/assets/lata/scene.gltf"></a-asset-item>
+      <a-asset-item id="lata" src="/assets/lata/scene.gltf"></a-asset-item>
     </a-assets>
-    <a-marker id="a-marker" markerhandler emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='assets/pattern-image.patt'>
+    <a-marker id="a-marker" markerhandler emitevents="true" cursor="rayOrigin: mouse" type='pattern'
+      url='assets/pattern-image.patt'>
       <a-entity id="model" gltf-model="/assets/lata/scene.gltf" rotation="90 180 0 270" scale="-12 12 12">
+
+        <div class="social-btns">
+          <a class="btn facebook" href="#"><i class="fa fa-facebook"></i></a>
+          <a class="btn twitter" href="#"><i class="fa fa-twitter"></i></a>
+          <a class="btn instagram" href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+
     </a-marker>
     <a-camera-static />
     <a-light type="ambient" color="white"></a-light>
@@ -30,7 +42,7 @@
   </a-scene>
 
   </a-scene>
-  
+
 </body>
 
 </html>
