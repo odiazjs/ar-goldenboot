@@ -10,37 +10,73 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="animate.css">
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/index.min.css">
+  <link rel="stylesheet" href="/css/flexboxgrid.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/animate.css">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
-  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
   <script src="/aframe.js"></script>
-
-  <script src="app.js"></script>
+  <script src="/js/app.js"></script>
 
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs='sourceType: webcam;' renderer="precision: medium;">
+  <footer>
+    <div class="row" style="height: 50px;">
+      <div class="col-xs">
+
+      </div>
+      <div class="col-xs">
+        <img class="fcblogo" src="./assets/fcblogo.png" alt="fcb logo" height="125" />
+      </div>
+      <div class="col-xs">
+
+      </div>
+    </div>
+    <div class="row" style="margin-left: -8px;">
+      <div class="col-xs-3">
+        <div class="font-container" style="font-size: 3em;">
+          <i class="fas fa-chevron-circle-left"></i>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <h3>Haz click en las flechas para seleccionar un objeto!</h3>
+      </div>
+      <div class="col-xs-3">
+        <div class="font-container" style="font-size: 3em;">
+          <i class="fas fa-chevron-circle-right"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a-scene awake embedded arjs='sourceType: webcam;' renderer="physicallyCorrectLights: true">
+    <a-entity camera></a-entity>
     <a-assets>
-      <a-asset-item id="lata" src="/assets/lata/scene.gltf"></a-asset-item>
+      <video id="oro-intro" autoplay loop="true" src="/assets/videos/oro-intro.mp4"></video>
     </a-assets>
     <a-marker id="a-marker" markerhandler emitevents="true" cursor="rayOrigin: mouse" type='pattern'
       url='assets/pattern-image.patt'>
-      <a-entity id="model" gltf-model="/assets/lata/scene.gltf" rotation="90 180 0 270" scale="-12 12 12">
+      <a-entity id="tv" gltf-model="/assets/tvscreen/Escenario y Pantalla.gltf" rotation="-75 0 0"
+        scale="-0.03 0.03 0.03">
+        <a-video src="#oro-intro" width="16" height="9" position="0.58758 20.07158 -27.46798" material=""
+          geometry="width: 32; height: 18" rotation="0 -180 0"></a-video>
+      </a-entity>
+      <a-entity id="podium" gltf-model="/assets/podium/Rotonda y Podios.gltf" rotation="-75 0 0"
+        scale="-0.04 0.04 0.04"></a-entity>
 
-        <div class="social-btns">
-          <a class="btn facebook" href="https://www.facebook.com/PepsiGuate"><i class="fa fa-facebook"></i></a>
-          <a class="btn twitter" href="https://twitter.com/PepsiGuate"><i class="fa fa-twitter"></i></a>
-          <a class="btn instagram" href="https://www.instagram.com/pepsiguate/?hl=es-la"><i class="fa fa-instagram"></i></a>
-        </div>
+      <!-- FC Barcelona Brand Start -->
+
+
+
+      <!-- FC Barcelona Brand End -->
 
     </a-marker>
     <a-camera-static />
-    <a-light type="ambient" color="white"></a-light>
-    <a-light type="point" intensity="4" position="1 2 2"></a-light>
-  </a-scene>
-
+    <a-light type="directional" color="white"
+      light="type: point; color: #ffffff; intensity: 50; groundColor: #0027c4; penumbra: 1; castShadow: true; shadowBias: 1"
+      position="0.06012 1.51414 -3.59952"></a-light>
   </a-scene>
 
 </body>
