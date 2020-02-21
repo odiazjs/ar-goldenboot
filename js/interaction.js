@@ -12,7 +12,7 @@ let state = {
 };
 
 let spotLight = null;
-let finalPosition = null;
+let cubeLights = null;
 
 export const registerListeners = () => {
   const arrowLeft = document.querySelector("#controls-arrow-left");
@@ -46,16 +46,11 @@ const handleArrowControls = direction => {
 const resolveLightPosition = (direction) => {
   state.hasClicked = true;
   state.direction = direction;
-  console.log(state.arrowsIndex);
-  console.log(spotLight.object3D.position)
-}
-
-const getFinalPosition = () => {
-  return {
-    x: state.modelPositions[state.arrowsIndex],
-    y: spotLight.object3D.position.y,
-    z: spotLight.object3D.position.z
-  }
+  cubeLights = document.querySelectorAll('a-entity[light]');
+  cubeLights.forEach(light => {
+    light.setAttribute('visible', false);
+  })
+  cubeLights[state.arrowsIndex].setAttribute('visible', true);
 }
 
 AFRAME.registerComponent("awake", {
@@ -63,12 +58,11 @@ AFRAME.registerComponent("awake", {
     spotLight = document.querySelector('#spot-light');
   },
   tick: function (deltaTime) {
-    console.log('spot light pos - ', spotLight.object3D.position.x);
     if (spotLight.object3D.position.x >= state.modelPositions[state.arrowsIndex]) {
       state.hasClicked = false
     }
     if (state.hasClicked) {
-      spotLight.object3D.position.lerpVectors(spotLight.object3D.position, getFinalPosition(), 1.0)
+      console.log('arrow index - ', state.arrowsIndex);
     }
   }
 });
