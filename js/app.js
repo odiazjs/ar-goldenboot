@@ -1,4 +1,11 @@
+import * as Interaction from './interaction.js';
+
 var stateInterval = null;
+
+function init () {
+  hideDebugUI();
+  Interaction.registerListeners();
+}
 
 function hideDebugUI() {
   var debugContainer = document.querySelector('#arjsDebugUIContainer');
@@ -13,23 +20,17 @@ function hideDebugUI() {
 
 function checkDomState () {
   if (document.readyState === "complete" || document.readyState === "interactive") {
-      hideDebugUI();
-      clearInterval(stateInterval);
+    init();
+    clearInterval(stateInterval);
   }
 }
 
 function docReady() {
   if (document.readyState === "loading") {
-    stateInterval = setInterval(checkDomState, 3500);
+    stateInterval = setInterval(checkDomState, 1000);
+  } else if (document.readyState === "complete" || document.readyState === "interactive") {
+    stateInterval = setInterval(checkDomState, 1000);
   }
 }
-
-AFRAME.registerComponent('awake', {
-  schema: {type: 'string'},
-
-  init: function () {
-    
-  }
-});
 
 docReady();
