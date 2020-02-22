@@ -1,7 +1,7 @@
 const setPosition = (prevPosition) => {
     return {
         x: prevPosition.x,
-        y: prevPosition.y - 1,
+        y: prevPosition.y - 1.5,
         z: prevPosition.z
     }
 }
