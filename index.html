@@ -17,6 +17,7 @@
 
   <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
   <script src="/aframe.js"></script>
+  <script src="/script.js"></script>
   <script src="/js/app.js" type="module"></script>
   <script src="/js/interaction.js" type="module"></script>
 
@@ -60,18 +61,18 @@
       <video id="oro-intro" autoplay loop="true" src="/assets/videos/oro-intro.mp4"></video>
     </a-assets>
 
-    <a-marker id="a-marker" markerhandler emitevents="true" cursor="rayOrigin: mouse" type='pattern'
-      url='assets/pattern-image.patt'>
+    <a-marker id="a-marker" listener markerhandler emitevents="true" cursor="rayOrigin: mouse" type='pattern'
+      url='./assets/pattern-image.patt'>
+    </a-marker>
+    
 
-      <a-entity id="tv" gltf-model="/assets/locker-room/SM_LockerRoom.gltf" 
-        position="0.41626 -0.00365 0.71473" rotation="-60 -0.59 0" scale="1 1 1">
+      <a-entity id="target" gltf-model="/assets/locker-room/SM_LockerRoom.gltf" 
+        position="0.41626 -0.00365 0.71473" rotation="0 -0.59 0" scale="1 1 1">
 
-        <!-- Video -->
-        <a-video src="#oro-intro" width="16" height="9" position="-0.04979 3.13682 -3.35039" material=""
+        <a-video id="video" src="#oro-intro" width="16" height="9" position="-0.04979 3.13682 -3.35039" material=""
           geometry="width: 3.02; height: 1.44" rotation="0 -180 0">
         </a-video>
 
-        <!-- Cubes -->
         <a-entity id="cube_1" gltf-model="/assets/player-benches/SM_BancaChampions.gltf"
           position="3.47099 0.1235 0.46948" rotation="0 -3.0 0" scale="1 1 1">
           <a-entity light="angle: 12; intensity: 8; type: spot; castShadow: true" position="-1.837 3.276 1.8"
@@ -79,28 +80,27 @@
           </a-entity>
         </a-entity>
         <a-entity id="cube_2" gltf-model="/assets/player-benches/SM_BancaIniesta.gltf"
-          position="-0.17969 0.11566 0.56912" rotation="0 -3.3 0" scale="-0.4 0.4 0.4">
+          position="-0.17969 0.11566 0.56912" rotation="0 -3.3 0" scale="1 1 1">
           <a-entity light="angle: 12; intensity: 8; type: spot; castShadow: true" position="-0.60466 3.26732 1.8"
             rotation="-36.56 -0.13 0" visible="false">
           </a-entity>
         </a-entity>
         <a-entity id="cube_3" gltf-model="/assets/player-benches/SM_BancaCryuff.gltf" position="0.75505 0.11844 0.62445"
-          rotation="0 -3.3 0" scale="-0.4 0.4 0.4">
+          rotation="0 -3.3 0" scale="1 1 1">
           <a-entity light="angle: 12; intensity: 8; type: spot; castShadow: true" position="0.51453 3.20956 1.8"
             rotation="-36.56 -0.13 0" visible="false">
           </a-entity>
         </a-entity>
         <a-entity id="cube_4" gltf-model="/assets/player-benches/SM_BancaMessi.gltf" position="1.73552 0.11871 0.68678"
-          rotation="0 -3.3 0" scale="-0.4 0.4 0.4">
+          rotation="0 -3.3 0" scale="1 1 1">
           <a-entity light="angle: 12; intensity: 8; type: spot; castShadow: true" position="1.66257 3.17831 1.8"
             rotation="-36.56 -0.13 0" visible="false">
           </a-entity>
         </a-entity>
 
       </a-entity>
-    </a-marker>
-    <a-entity camera>
-      </entity>
+
+      <a-entity camera></entity>
 
       <a-light id="spot-light" type="spot" color="white"
         light="type: point; color: #ffffff; intensity: 9; penumbra: 1; castShadow: true; shadowBias: 1"

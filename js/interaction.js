@@ -56,13 +56,5 @@ const resolveLightPosition = (direction) => {
 AFRAME.registerComponent("awake", {
   init: function() {
     spotLight = document.querySelector('#spot-light');
-  },
-  tick: function (deltaTime) {
-    if (spotLight.object3D.position.x >= state.modelPositions[state.arrowsIndex]) {
-      state.hasClicked = false
-    }
-    if (state.hasClicked) {
-      console.log('arrow index - ', state.arrowsIndex);
-    }
   }
 });
