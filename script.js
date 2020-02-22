@@ -1,3 +1,11 @@
+const setPosition = (prevPosition) => {
+    return {
+        x: prevPosition.x,
+        y: prevPosition.y - 1,
+        z: prevPosition.z
+    }
+}
+
 AFRAME.registerComponent("listener", {
     init: function() {
       this.target = document.querySelector('#target');
@@ -8,7 +16,7 @@ AFRAME.registerComponent("listener", {
      if (this.el.object3D.visible) {
        this.target.setAttribute('visible', 'true')
        if(this.prevPosition) {
-         this.target.object3D.position.lerp(this.prevPosition, 0.1)
+         this.target.object3D.position.lerp(setPosition(this.prevPosition), 0.1)
          //let rot = this.target.object3D.rotation.toVector3().lerp(this.prevRotation, 0.1)
          //this.target.object3D.rotation.setFromVector3(rot)
        } else {
