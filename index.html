@@ -18,8 +18,9 @@
   <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
   <script src="/aframe.js"></script>
   <script src="/script.js"></script>
-  <script src="/js/app.js" type="module"></script>
-  <script src="/js/interaction.js" type="module"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/interaction.js"></script>
+  <script src="/js/media.js"></script>
 
 </head>
 
@@ -27,23 +28,25 @@
 
   <!-- FC Barcelona Brand Start -->
   <footer>
-    <div class="row" style="height: 50px;">
+    <div class="row" style="height: 0px;">
       <div class="col-xs">
       </div>
       <div class="col-xs">
-        <img class="fcblogo" src="./assets/fcblogo.png" alt="fcb logo" height="125" />
+        <!-- <img class="fcblogo" src="./assets/fcblogo.png" alt="fcb logo" height="125" /> -->
       </div>
       <div class="col-xs">
       </div>
     </div>
-    <div class="row" style="margin-left: -8px;">
+    <div class="row" style="min-height: 125px;">
       <div class="col-xs-3">
         <div id="controls-arrow-left" class="font-container" style="font-size: 3em;">
           <i class="fas fa-chevron-circle-left"></i>
         </div>
       </div>
       <div class="col-xs-6">
-        <h3>Haz click en las flechas para seleccionar un objeto!</h3>
+        <h2 id="model-info-title"></h2>
+        <!-- <img class="fcblogo" src="./assets/Messi-bota-dor.jpg" alt="fcb logo" height="125" /> -->
+        <p id="model-info-desc"></p>
       </div>
       <div class="col-xs-3">
         <div id="controls-arrow-right" class="font-container" style="font-size: 3em;">
@@ -51,17 +54,35 @@
         </div>
       </div>
     </div>
+    <div class="row" style="margin: 60px 10px;">
+      <div class="col-xs-3">
+        <img class="fcblogo" src="./assets/Messi-bota-dor.jpg" alt="fcb logo" height="60" />
+      </div>
+      <div class="col-xs-3">
+        <img class="fcblogo" src="./assets/Messi-bota-dor.jpg" alt="fcb logo" height="60" />
+      </div>
+      <div class="col-xs-3">
+        <img class="fcblogo" src="./assets/Messi-bota-dor.jpg" alt="fcb logo" height="60" />
+      </div>
+      <div class="col-xs-3">
+        <img class="fcblogo" src="./assets/Messi-bota-dor.jpg" alt="fcb logo" height="60" />
+      </div>
+    </div>
   </footer>
   <!-- FC Barcelona Brand End -->
 
-  <a-scene awake embedded arjs='sourceType: webcam;'
+  <a-scene embedded arjs='sourceType: webcam;'
     renderer="colorManagement: true; physicallyCorrectLights: true; logarithmicDepthBuffer: true; sortObjects: false;">
 
     <a-assets>
       <video id="oro-intro" loop="true"></video>
     </a-assets>
 
-    <a-marker id="a-marker" listener markerhandler emitevents="true" cursor="rayOrigin: mouse" type='pattern'
+    <a-marker id="a-marker"
+      listener
+      interaction 
+      media
+      emitevents="true" cursor="rayOrigin: mouse" type='pattern'
       url='./assets/pattern-image.patt'>
     </a-marker>
 
