@@ -27,16 +27,17 @@
 <body style='margin : 0px; overflow: hidden;'>
 
   <!-- FC Barcelona Brand Start -->
-  <footer>
-    <div class="row" style="height: 0px;">
-      <div class="col-xs">
+  <div class="header">
+    <div class="row">
+      <div class="col-xs-3">
+        <img class="logo" src="./assets/fcblogo.png" alt="fcb logo" />
       </div>
-      <div class="col-xs">
-        <!-- <img class="fcblogo" src="./assets/fcblogo.png" alt="fcb logo" height="125" /> -->
-      </div>
-      <div class="col-xs">
+      <div class="col-xs-9">
+        <a href="#" class="title">BARCELONA AR EXPERIENCE</a>
       </div>
     </div>
+  </div>
+  <footer>
     <div class="row" style="min-height: 125px;">
       <div class="col-xs-3">
         <div id="controls-arrow-left" class="font-container" style="font-size: 3em;">
@@ -45,7 +46,6 @@
       </div>
       <div class="col-xs-6">
         <h2 id="model-info-title"></h2>
-        <!-- <img class="fcblogo" src="./assets/Messi-bota-dor.jpg" alt="fcb logo" height="125" /> -->
         <p id="model-info-desc"></p>
       </div>
       <div class="col-xs-3">
@@ -54,19 +54,8 @@
         </div>
       </div>
     </div>
-    <div class="row" style="margin: 60px 10px;">
-      <div class="col-xs-3">
-        <img class="fcblogo" src="./assets/Messi-bota-dor.jpg" alt="fcb logo" height="60" />
-      </div>
-      <div class="col-xs-3">
-        <img class="fcblogo" src="./assets/Messi-bota-dor.jpg" alt="fcb logo" height="60" />
-      </div>
-      <div class="col-xs-3">
-        <img class="fcblogo" src="./assets/Messi-bota-dor.jpg" alt="fcb logo" height="60" />
-      </div>
-      <div class="col-xs-3">
-        <img class="fcblogo" src="./assets/Messi-bota-dor.jpg" alt="fcb logo" height="60" />
-      </div>
+    <div class="row" style="margin: 60px 20px;">
+      <img id="model-stats" class="fcblogo" style="max-width: 325px;" src="./assets/copa-champios.png" alt="model statistics" />
     </div>
   </footer>
   <!-- FC Barcelona Brand End -->
@@ -99,11 +88,15 @@
         <a-entity light="angle: 12; intensity: 8; type: spot; castShadow: true" position="-1.837 3.276 1.8"
           rotation="-36.56 -0.13 0" visible="">
         </a-entity>
+        <a-entity model id="cube_1_model" gltf-model="/assets/botin-oro/Botin de Oro.gltf" position="-1.79121 0.49307 -2.17667" scale="0.15 0.15 0.15">
+        </a-entity>
       </a-entity>
       <a-entity cube id="cube_2" gltf-model="/assets/player-benches/SM_BancaIniesta.gltf" position="-0.013 0 0.065"
         rotation="" scale="">
         <a-entity light="angle: 12; intensity: 8; type: spot; castShadow: true" position="-0.60466 3.26732 1.8"
           rotation="-36.56 -0.13 0" visible="false">
+        </a-entity>
+        <a-entity model id="cube_2_model" gltf-model="/assets/botin-oro/Botin de Oro.gltf" position="-0.59811 0.49307 -2.17667" scale="0.15 0.15 0.15">
         </a-entity>
       </a-entity>
       <a-entity cube id="cube_3" gltf-model="/assets/player-benches/SM_BancaCryuff.gltf" position="-0.00784 0 0.065"
@@ -111,11 +104,17 @@
         <a-entity light="angle: 12; intensity: 8; type: spot; castShadow: true" position="0.51453 3.20956 1.8"
           rotation="-36.56 -0.13 0" visible="false">
         </a-entity>
+        <a-entity model id="cube_3_model" gltf-model="/assets/botin-oro/Botin de Oro.gltf" position="0.6152 0.49307 -2.17667" scale="0.15 0.15 0.15">
+        </a-entity>
       </a-entity>
       <a-entity cube id="cube_4" gltf-model="/assets/player-benches/SM_BancaMessi.gltf" position="-0.06673 0 0.065"
         rotation="" scale="">
         <a-entity light="angle: 12; intensity: 8; type: spot; castShadow: true" position="1.66257 3.17831 1.8"
           rotation="-36.56 -0.13 0" visible="false">
+        </a-entity>
+        <a-entity model id="cube_4_model" gltf-model="/assets/botin-oro/Botin de Oro.gltf"
+          position="1.8051 0.49307 -2.17667" 
+          scale="0.15 0.15 0.15">
         </a-entity>
       </a-entity>
 
@@ -123,9 +122,7 @@
 
     <a-camera-static />
 
-    <a-light id="spot-light" type="spot" color="white"
-      light="type: point; color: #ffffff; intensity: 10; penumbra: 1; castShadow: true; shadowBias: 1"
-      position="0.16202 0.90051 -1.60489" rotation="">
+    <a-light id="spot-light" type="spot" color="white" light="type: point; color: #ffffff; intensity: 20; penumbra: 1; castShadow: true; shadowBias: 1" position="-0.09255 1.68958 -4.47987" rotation="">
     </a-light>
 
   </a-scene>

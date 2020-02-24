@@ -14,11 +14,30 @@ let state = {
     {x: -0.00784, y: 0, z: 0.065},
     {x: -0.06673, y: 0, z: 0.065},
   ],
+  models: [],
   modelsInfo: [
-    {title: 'CHAMPIONS CUP', description: 'Esta copa la gano el FCB contra el Liverpool en el 2015'},
-    {title: 'BOTINES DE INIESTA', description: 'Con estos botines, Andres Iniesta anota en el minuto 94 para superar al AC Milan'},
-    {title: 'CAMISA DE CRIUYFF', description: 'La familia de Criuff dona su camisola con la que jugo en 1974'},
-    {title: 'BOTIN DE ORO', description: 'El 6to que recibe Lionel Messi, tras anotar 36 goles en 34 partidos.'}
+    {
+      title: 'CHAMPIONS CUP', 
+      description: 'El Barcelona gana la Copa Champions League en el 2015, tras derrotar a Juventus 3 a 1, ' + 
+        'con goles de Luis Suarez y Neymar.',
+      statsImg: './assets/copa-champios.png'
+    },
+    {
+      title: 'BOTINES DE INIESTA', 
+      description: 'Con estos botines, Andres Iniesta anota en el minuto 94 para empatar con el Chelsea. ' + 
+        'y asi seguir rumbo al titulo de la Champions.',
+      statsImg: './assets/iniesta.png'
+    },
+    {
+      title: 'CAMISA JOHAN CRUYFF', 
+      description: 'La familia de Criuff dona su camisola con la que jugo en Barcelona en el año 1974',
+      statsImg: './assets/Johan-Cruyff.png'
+    },
+    {
+      title: 'BOTIN DE ORO', 
+      description: 'El 6to que recibe Lionel Messi, tras anotar 36 goles en 34 partidos, superando a Mbappe con 34 goles.',
+      statsImg: './assets/botin-de-oro.png'
+    }
   ]
 };
 
@@ -75,9 +94,17 @@ const resolveLightPosition = (direction) => {
   const modelInfoDescEl = document.querySelector('#model-info-desc');
   const modelInfo = state.modelsInfo[state.arrowsIndex];
 
-  // animate it
-  //modelInfoTitleEl.classList.remove('animated', 'bounceInDown')
-  //modelInfoTitleEl.classList.add('animated', 'bounceInDown')
+  // Set model stats
+  const modelImgEl = document.querySelector('#model-stats');
+  modelImgEl.setAttribute('src', state.modelsInfo[state.arrowsIndex].statsImg);
+
+  // animate.js
+  models.forEach((model, index) => {
+    model.removeAttribute('animation');
+  })
+  if (models[state.arrowsIndex]) {
+    models[state.arrowsIndex].setAttribute('animation', 'property: rotation; to: 0 360 0; loop: true; dur: 10000')
+  }
 
   modelInfoTitleEl.innerHTML = modelInfo.title;
   modelInfoDescEl.innerHTML = modelInfo.description;
@@ -88,6 +115,7 @@ AFRAME.registerComponent("interaction", {
     registerListeners();
     spotLight = document.querySelector("#spot-light");
     cubes = document.querySelectorAll('a-entity[cube]');
+    models = document.querySelectorAll('a-entity[model]');
   },
   tick: function() {
     if (cubes[state.arrowsIndex].object3D.position.z === state.showCasePos.z) {
