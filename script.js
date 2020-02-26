@@ -43,7 +43,7 @@ AFRAME.registerComponent("hammer", {
     hammertime.add(pinch); // add it to the Manager instance
 
     hammertime.on("pan", ev => {
-      let rotationDelta = 2;
+      let rotationDelta = 2.8;
       let rotation = model.getAttribute("rotation");
       switch (ev.direction) {
         case 2:
