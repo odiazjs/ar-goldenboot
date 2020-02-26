@@ -67,15 +67,10 @@ AFRAME.registerComponent("hammer", {
     });
 
     hammertime.on("pinch", ev => {
-      setTimeout(() => {
         let scale = { x: ev.scale, y: ev.scale, z: ev.scale };
-        let prevScale = model.getAttribute("scale");
-        if (scale.x > prevScale.x && scale.y > prevScale.y && scale.z > prevScale.z) {
-          return;
-        } else {
+        if (ev.gesture.scale != 1) {
           model.setAttribute("scale", scale);
         }
-      })
     });
   }
 });
