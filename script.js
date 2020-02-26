@@ -70,7 +70,7 @@ AFRAME.registerComponent("hammer", {
       setTimeout(() => {
         let scale = { x: ev.scale, y: ev.scale, z: ev.scale };
         model.setAttribute("scale", scale);
-      }, 500)
+      }, 20)
     });
   }
 });
