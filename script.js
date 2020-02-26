@@ -47,26 +47,30 @@ AFRAME.registerComponent("hammer", {
       let rotation = model.getAttribute("rotation");
       switch (ev.direction) {
         case 2:
-          rotation.y = rotation.y + rotationDelta;
-          break;
-        case 4:
           rotation.y = rotation.y - rotationDelta;
           break;
+        case 4:
+          rotation.y = rotation.y + rotationDelta;
+          break;
         case 8:
-          rotation.x = rotation.x + rotationDelta;
+          rotation.x = rotation.x - rotationDelta;
           break;
         case 16:
-          rotation.x = rotation.x - rotationDelta;
+          rotation.x = rotation.x + rotationDelta;
           break;
         default:
           break;
       }
-      model.setAttribute("rotation", rotation);
+      setTimeout(() => {
+        model.setAttribute("rotation", rotation);
+      }, 5)
     });
 
     hammertime.on("pinch", ev => {
-      let scale = { x: ev.scale, y: ev.scale, z: ev.scale };
-      model.setAttribute("scale", scale);
+      setTimeout(() => {
+        let scale = { x: ev.scale, y: ev.scale, z: ev.scale };
+        model.setAttribute("scale", scale);
+      }, 500)
     });
   }
 });
