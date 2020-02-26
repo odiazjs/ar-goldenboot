@@ -61,16 +61,15 @@ AFRAME.registerComponent("hammer", {
         default:
           break;
       }
-      setTimeout(() => {
         model.setAttribute("rotation", rotation);
-      }, 5)
     });
 
     hammertime.on("pinch", ev => {
         let scale = { x: ev.scale, y: ev.scale, z: ev.scale };
-        if (ev.gesture.scale != 1) {
-          model.setAttribute("scale", scale);
-        }
+        setTimeout(() => {
+          hammertime.get('pan').set({ enable: true });
+        }, 100);
+        model.setAttribute("scale", scale);
     });
   }
 });
