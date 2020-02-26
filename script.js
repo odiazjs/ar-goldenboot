@@ -1,21 +1,19 @@
 const setPosition = prevPosition => {
   return {
     x: prevPosition.x,
-    y: prevPosition.y - 1.5,
+    y: prevPosition.y,
     z: prevPosition.z
   };
 };
 
 AFRAME.registerComponent("listener", {
   init: function() {
-    //Interaction.initInteractionEl();
     this.target = document.querySelector("#target");
     this.prevPosition = null;
     //this.prevRotation = {x:0, y:0, z:0};
   },
   tick: function() {
     if (this.el.object3D.visible) {
-      //Interaction.onInteractionTick();
       this.target.setAttribute("visible", "true");
       if (this.prevPosition) {
         this.target.object3D.position.lerp(setPosition(this.prevPosition), 0.1);
@@ -32,5 +30,43 @@ AFRAME.registerComponent("listener", {
       this.prevPosition = null;
       //this.prevRotation = {x:0, y:0, z:0};
     }
+  }
+});
+
+AFRAME.registerComponent("hammer", {
+  init: function() {
+    var element = document.querySelector("body");
+    this.marker = document.querySelector("a-marker");
+    var model = document.querySelector("#target");
+    var hammertime = new Hammer(element);
+    var pinch = new Hammer.Pinch(); // Pinch is not by default in the recognisers
+    hammertime.add(pinch); // add it to the Manager instance
+
+    hammertime.on("pan", ev => {
+      let rotationDelta = 2;
+      let rotation = model.getAttribute("rotation");
+      switch (ev.direction) {
+        case 2:
+          rotation.y = rotation.y + rotationDelta;
+          break;
+        case 4:
+          rotation.y = rotation.y - rotationDelta;
+          break;
+        case 8:
+          rotation.x = rotation.x + rotationDelta;
+          break;
+        case 16:
+          rotation.x = rotation.x - rotationDelta;
+          break;
+        default:
+          break;
+      }
+      model.setAttribute("rotation", rotation);
+    });
+
+    hammertime.on("pinch", ev => {
+      let scale = { x: ev.scale, y: ev.scale, z: ev.scale };
+      model.setAttribute("scale", scale);
+    });
   }
 });
