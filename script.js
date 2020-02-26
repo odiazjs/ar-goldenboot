@@ -1,7 +1,7 @@
 const setPosition = prevPosition => {
   return {
     x: prevPosition.x,
-    y: prevPosition.y,
+    y: prevPosition.y - 0.25,
     z: prevPosition.z
   };
 };
@@ -32,8 +32,6 @@ AFRAME.registerComponent("listener", {
     }
   }
 });
-
-let prevScale = null;
 
 AFRAME.registerComponent("hammer", {
   init: function() {
@@ -71,13 +69,13 @@ AFRAME.registerComponent("hammer", {
     hammertime.on("pinch", ev => {
       setTimeout(() => {
         let scale = { x: ev.scale, y: ev.scale, z: ev.scale };
-        if (prevScale) {
-          model.setAttribute("scale", prevScale);
+        let prevScale = model.getAttribute("scale");
+        if (scale.x > prevScale.x && scale.y > prevScale.y && scale.z > prevScale.z) {
+          return;
         } else {
           model.setAttribute("scale", scale);
         }
-        prevScale = scale;
-      }, 5)
+      })
     });
   }
 });
