@@ -66,10 +66,7 @@ AFRAME.registerComponent("hammer", {
 
     hammertime.on("pinch", ev => {
         let scale = { x: ev.scale, y: ev.scale, z: ev.scale };
-        setTimeout(() => {
-          hammertime.get('pan').set({ enable: true });
-        }, 100);
-        model.setAttribute("scale", scale);
+        model.setAttribute("scale", scale * 0.75);
     });
   }
 });
