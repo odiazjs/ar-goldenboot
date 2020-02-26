@@ -33,6 +33,8 @@ AFRAME.registerComponent("listener", {
   }
 });
 
+let prevScale = null;
+
 AFRAME.registerComponent("hammer", {
   init: function() {
     var element = document.querySelector("body");
@@ -43,7 +45,7 @@ AFRAME.registerComponent("hammer", {
     hammertime.add(pinch); // add it to the Manager instance
 
     hammertime.on("pan", ev => {
-      let rotationDelta = 2;
+      let rotationDelta = 2.5;
       let rotation = model.getAttribute("rotation");
       switch (ev.direction) {
         case 2:
@@ -69,8 +71,13 @@ AFRAME.registerComponent("hammer", {
     hammertime.on("pinch", ev => {
       setTimeout(() => {
         let scale = { x: ev.scale, y: ev.scale, z: ev.scale };
-        model.setAttribute("scale", scale);
-      }, 20)
+        if (prevScale) {
+          model.setAttribute("scale", prevScale);
+        } else {
+          model.setAttribute("scale", scale);
+        }
+        prevScale = scale;
+      }, 5)
     });
   }
 });
