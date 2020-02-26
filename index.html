@@ -20,8 +20,14 @@
   <script src="/aframe.js"></script>
   <script src="/script.js"></script>
   <script src="/js/app.js"></script>
-  <!-- <script src="/js/interaction.js"></script>
-  <script src="/js/media.js"></script> -->
+
+  <script>
+    AFRAME.registerComponent('goldenbootonload', {
+      init: function () {
+        console.log('loaded!!')
+      }
+    })
+  </script>
 
 </head>
 
@@ -75,7 +81,7 @@
 
 
     <a-entity id="target" gltf-model="/assets/botin-oro/Botin de Oro.gltf" position="-0.14671 -1.37996 -8.10592"
-      rotation="30 0 0" scale="0.5 0.5 0.5" visible="">
+      goldenbootonload rotation="30 0 0" scale="0.5 0.5 0.5" visible="">
     </a-entity>
 
     <a-camera-static />
