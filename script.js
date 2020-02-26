@@ -33,6 +33,33 @@ AFRAME.registerComponent("listener", {
   }
 });
 
+AFRAME.registerComponent("listener2", {
+  init: function() {
+    this.target = document.querySelector("#target2");
+    this.prevPosition = null;
+    //this.prevRotation = {x:0, y:0, z:0};
+  },
+  tick: function() {
+    if (this.el.object3D.visible) {
+      this.target.setAttribute("visible", "true");
+      if (this.prevPosition) {
+        this.target.object3D.position.lerp(setPosition(this.prevPosition), 0.1);
+        //let rot = this.target.object3D.rotation.toVector3().lerp(this.prevRotation, 0.1)
+        //this.target.object3D.rotation.setFromVector3(rot)
+      } else {
+        this.target.setAttribute("position", this.el.getAttribute("position"));
+        //this.target.setAttribute('rotation', this.el.getAttribute('rotation'))
+      }
+      this.prevPosition = this.el.object3D.position;
+      //this.prevRotation = this.el.object3D.rotation
+    } else {
+      this.target.setAttribute("visible", "false");
+      this.prevPosition = null;
+      //this.prevRotation = {x:0, y:0, z:0};
+    }
+  }
+});
+
 AFRAME.registerComponent("hammer", {
   init: function() {
     var element = document.querySelector("body");
@@ -53,10 +80,10 @@ AFRAME.registerComponent("hammer", {
           rotation.y = rotation.y + rotationDelta;
           break;
         case 8:
-          rotation.x = rotation.x - rotationDelta;
+          //rotation.x = rotation.x - rotationDelta;
           break;
         case 16:
-          rotation.x = rotation.x + rotationDelta;
+          //rotation.x = rotation.x + rotationDelta;
           break;
         default:
           break;
