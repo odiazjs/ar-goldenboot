@@ -1,0 +1,144 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.0.5",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Zapaton Iniesta",
+            "translation" : [
+                0,
+                0.362343966960907,
+                0
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Zapato Iniesta.001",
+            "normalTexture" : {
+                "index" : 0,
+                "texCoord" : 0
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.699999988079071
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Black Piece.002",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "source" : 0
+        },
+        {
+            "source" : 1
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "Zapato Iniesta_normal",
+            "uri" : "Zapato Iniesta_normal.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "Zapato Iniesta_diffuseOriginal",
+            "uri" : "Zapato Iniesta_diffuseOriginal.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 11775,
+            "max" : [
+                0.5906145572662354,
+                0.8817671537399292,
+                1.4347035884857178
+            ],
+            "min" : [
+                -0.48349878191947937,
+                -0.3635380268096924,
+                -1.4472113847732544
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 11775,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 11775,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 39540,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 141300,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 141300,
+            "byteOffset" : 141300
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 94200,
+            "byteOffset" : 282600
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 79080,
+            "byteOffset" : 376800
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 455880,
+            "uri" : "Zapato Iniesta.bin"
+        }
+    ]
+}

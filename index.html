@@ -97,19 +97,32 @@
   </div>
 
   <footer>
-    <model-viewer 
+    <!-- <model-viewer 
       background-color="#293e77" 
       ios-src="./assets/goldenboot/Botin de Oro Messi.usdz" 
       src="./assets/locker-room/SM_LockerRoom.gltf"
       alt="6to botin de oro de Messi" 
       ar 
       style="width: 100%; height: 100%;" camera-controls>
-    </model-viewer>
-    <!-- <div class="row">
-      <div class="col-xs-12">
-        
+    </model-viewer> -->
+    <div class="row" style="min-height: 100%;">
+      <div class="col-xs-3">
+        <i class="fas fa-lock"></i>
       </div>
-    </div> -->
+      <div class="col-xs-3">
+        col 2
+      </div>
+      <div class="col-xs-3">
+        col 3
+      </div>
+      <div class="col-xs-3">
+        col 4
+      </div>
+    </div>
+    <div class="row" style="margin: 60px 20px;">
+      <img id="model-stats" class="fcblogo" style="max-width: 325px;" src="./assets/copa-champios.png"
+        alt="model statistics" />
+    </div>
   </footer>
 
   <!-- FC Barcelona Brand End -->
@@ -119,14 +132,14 @@
 
     <a-assets>
       <a-entity src="/assets/botin-oro/Botin de Oro.gltf" id="golden-boot"></a-entity>
-      <a-entity src="/assets/lata/scene.gltf" id="soda-can"></a-entity>
+      <a-entity src="/assets/iniesta/Zapato Iniesta.gltf" id="iniesta-boot"></a-entity>
     </a-assets>
 
     <a-marker id="a-marker-0" listener interaction media hammer registerevents emitevents="true"
       cursor="rayOrigin: mouse" type='pattern' url='./assets/markers/pattern-goldenboot.patt'>
     </a-marker>
 
-    <a-entity id="target" gltf-model="#golden-boot" position="-0.14671 -1.37996 -8.10592" modelonload rotation="20 0 0"
+    <a-entity id="target" gltf-model="#iniesta-boot" position="-0.14671 -1.37996 -8.10592" modelonload rotation="20 0 0"
       scale="0.5 0.5 0.5" visible="">
     </a-entity>
 
