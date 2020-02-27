@@ -1,9 +1,10 @@
 let videoEl = null;
 
 const playVideo = (random) => {
-    videoEl.setAttribute("src", `/assets/videos/oro-intro.mp4?random=${random}`);
-    videoEl.setAttribute('id', 'oro-intro');
-    videoEl.setAttribute('autoplay', 'true');    
+    setTimeout(() => {
+        videoEl.setAttribute("src", `./assets/videos/oro-intro.mp4?random=${random}`);
+        videoEl.setAttribute('autoplay', 'true');
+    }, 1000)    
 }
 
 AFRAME.registerComponent("media", {
