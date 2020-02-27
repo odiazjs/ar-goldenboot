@@ -81,6 +81,10 @@
     });
 
     // Media
+    window.addEventListener('click', function () {
+      var v = document.querySelector('#oro-intro');
+      v.play();
+    });
 
   </script>
 
@@ -141,7 +145,11 @@
     <a-assets>
       <a-entity src="/assets/botin-oro/Botin de Oro.gltf" id="golden-boot"></a-entity>
       <a-entity src="/assets/iniesta/Zapato Iniesta.gltf" id="iniesta-boot"></a-entity>
-      <video id="oro-intro" autoplay loop controls="true" crossorigin="anonymous" playsinline webkit-playsinline src="./assets/videos/oro-intro.mp4?12345678910">
+      <video id="oro-intro" autoplay loop controls="true" crossorigin="anonymous" playsinline webkit-playsinline
+        media
+        muted="true"
+        play="true"  
+        src="./assets/videos/oro-intro.mp4?12345678910">
       </video>
     </a-assets>
 
@@ -153,7 +161,8 @@
       rotation="20 0 0" scale="0.5 0.5 0.5" visible="">
     </a-entity>
 
-    <a-video media playsinline src="#oro-intro" width="16" height="9" position="0 4 -30" rotation="0 0 0" scale=".6 .6 .6">
+    <a-video media src="#oro-intro" width="16" height="9" position="0 5 -30" rotation="0 0 0"
+      scale=".6 .6 .6">
     </a-video>
 
     <!-- <a-marker id="a-marker-1" listener2 interaction media hammer registerevents emitevents="true"
