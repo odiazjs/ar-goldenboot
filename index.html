@@ -36,6 +36,10 @@
 
     let markerFound = false;
     let loader = null;
+    const markersMedia = {
+      'a-marker-0': {vidSrc: './assets/videos/oro-intro.mp4?12345678910'},
+      'a-marker-1': {vidSrc: 'https://www.youtube.com/watch?v=zWBKP-DZNEc?12345678910'}
+    };
 
     AFRAME.registerComponent('registerevents', {
       init: function () {
@@ -48,6 +52,10 @@
           var markerId = marker.id;
           markerFound = true;
           console.log('markerFound', markerId);
+          const videoEl = document.getElementById("oro-intro");
+          videoEl.pause();
+          videoEl.setAttribute('src', markersMedia[markerId].vidSrc);
+          videoEl.play();
         });
 
         marker.addEventListener('markerLost', function () {
