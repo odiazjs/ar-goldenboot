@@ -4,7 +4,7 @@ const playVideo = (random, src) => {
     setTimeout(() => {
         videoEl.setAttribute("src", `${src}?${random}`);
         videoEl.setAttribute('autoplay', 'true');
-    }, 500)
+    }, 100)
 }
 
 AFRAME.registerComponent("media", {
