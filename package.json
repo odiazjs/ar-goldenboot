@@ -13,6 +13,7 @@
   "author": "odiaz.dw@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "http-server": "^0.12.0"
+    "http-server": "^0.12.0",
+    "ngrok": "^3.2.7"
   }
 }
