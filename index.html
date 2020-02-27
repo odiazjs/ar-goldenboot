@@ -30,6 +30,7 @@
   <script src="/aframe.js"></script>
   <script src="/script.js"></script>
   <script src="/js/app.js"></script>
+  <script src="/js/media.js"></script>
 
   <script>
 
@@ -80,34 +81,7 @@
     });
 
     // Media
-    let videoEl = null;
-    AFRAME.registerComponent('vidhandler', {
-      init: function () {
-        this.toggle = false;
-        this.vid = document.querySelector("#oro-intro");
-        videoEl = this.vid;
-        this.vid.pause();
-      },
-      tick: function () {
-        if (this.el.object3D.visible == true) {
-          if (!this.toggle) {
-            this.toggle = true;
-            this.vid.play();
-          }
-        } else {
-          this.toggle = false;
-          this.vid.pause();
-        }
-      }
-    });
 
-    function refrespage() {
-      location.reload();
-    }
-
-    function playvid() {
-      vid.play();
-    }
   </script>
 
 </head>
@@ -167,6 +141,8 @@
     <a-assets>
       <a-entity src="/assets/botin-oro/Botin de Oro.gltf" id="golden-boot"></a-entity>
       <a-entity src="/assets/iniesta/Zapato Iniesta.gltf" id="iniesta-boot"></a-entity>
+      <video id="oro-intro" autoplay loop crossorigin="anonymous" playsinline webkit-playsinline src="./assets/videos/oro-intro.mp4?12345678910">
+      </video>
     </a-assets>
 
     <a-marker id="a-marker-0" listener interaction hammer registerevents emitevents="true" cursor="rayOrigin: mouse"
@@ -177,8 +153,8 @@
       rotation="20 0 0" scale="0.5 0.5 0.5" visible="">
     </a-entity>
 
-    <a-video vidhandler id="oro-intro" src="" autoplay loop="true" width="16" height="9" position="0 4 -30" rotation="0 0 0"
-      scale=".6 .6 .6"></a-video>
+    <a-video media src="#oro-intro" width="16" height="9" position="0 4 -30" rotation="0 0 0" scale=".6 .6 .6">
+    </a-video>
 
     <!-- <a-marker id="a-marker-1" listener2 interaction media hammer registerevents emitevents="true"
       cursor="rayOrigin: mouse" type='pattern' url='./assets/pattern-image.patt'>
