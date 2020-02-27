@@ -10,6 +10,7 @@
   </style>
 
   <meta name="description" content="balondioro">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -144,7 +145,11 @@
       scale="0.5 0.5 0.5" visible="">
     </a-entity>
 
-    <a-video id="oro-intro" src="https://www.youtube.com/watch?v=zWBKP-DZNEc" width="16" height="9" position="0 4 -30" rotation="0 0 0" scale=".6 .6 .6"></a-video>
+    <a-video id="oro-intro" src="https://www.youtube.com/watch?v=zWBKP-DZNEc"
+      autoplay
+      loop="true"
+      width="16" height="9" 
+      position="0 4 -30" rotation="0 0 0" scale=".6 .6 .6"></a-video>
 
     <!-- <a-marker id="a-marker-1" listener2 interaction media hammer registerevents emitevents="true"
       cursor="rayOrigin: mouse" type='pattern' url='./assets/pattern-image.patt'>
