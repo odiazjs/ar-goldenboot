@@ -77,23 +77,32 @@
     });
 
     // Media
-    let videoEl = null;
-    const playVideo = (random) => {
-        setTimeout(() => {
-            videoEl.setAttribute("src", `./assets/videos/oro-intro.mp4?random=${random}`);
-            videoEl.setAttribute('autoplay', 'true');
-        }, 1000)    
-    }
-    AFRAME.registerComponent("media", {
-        init: function() {
-            videoEl = document.getElementById("oro-intro");
-            const random = Math.floor(Math.random() * 100);
-            playVideo(random)
-        },
-        tick: function() {
-          
+    AFRAME.registerComponent('vidhandler', {
+      init: function () {
+        this.toggle = false;
+        this.vid = document.querySelector("#oro-intro");
+        this.vid.pause();
+      },
+      tick: function () {
+        if (this.el.object3D.visible == true) {
+          if (!this.toggle) {
+            this.toggle = true;
+            this.vid.play();
+          }
+        } else {
+          this.toggle = false;
+          this.vid.pause();
         }
-      });
+      }
+    });
+
+    function refrespage() {
+      location.reload();
+    }
+
+    function playvid() {
+      vid.play();
+    }
   </script>
 
 </head>
@@ -155,19 +164,16 @@
       <a-entity src="/assets/iniesta/Zapato Iniesta.gltf" id="iniesta-boot"></a-entity>
     </a-assets>
 
-    <a-marker id="a-marker-0" listener interaction hammer registerevents emitevents="true"
-      cursor="rayOrigin: mouse" type='pattern' url='./assets/markers/pattern-goldenboot.patt'>
+    <a-marker id="a-marker-0" listener interaction hammer registerevents emitevents="true" cursor="rayOrigin: mouse"
+      type='pattern' url='./assets/markers/pattern-goldenboot.patt'>
     </a-marker>
 
-    <a-entity media id="target" gltf-model="#golden-boot" position="-0.14671 -1.37996 -8.10592" modelonload rotation="20 0 0"
-      scale="0.5 0.5 0.5" visible="">
+    <a-entity media id="target" gltf-model="#golden-boot" position="-0.14671 -1.37996 -8.10592" modelonload
+      rotation="20 0 0" scale="0.5 0.5 0.5" visible="">
     </a-entity>
 
-    <a-video id="oro-intro" src=""
-      autoplay
-      loop="true"
-      width="16" height="9" 
-      position="0 4 -30" rotation="0 0 0" scale=".6 .6 .6"></a-video>
+    <a-video vidhandler id="oro-intro" src="" autoplay loop="true" width="16" height="9" position="0 4 -30" rotation="0 0 0"
+      scale=".6 .6 .6"></a-video>
 
     <!-- <a-marker id="a-marker-1" listener2 interaction media hammer registerevents emitevents="true"
       cursor="rayOrigin: mouse" type='pattern' url='./assets/pattern-image.patt'>
