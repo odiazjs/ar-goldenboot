@@ -37,8 +37,8 @@
     let markerFound = false;
     let loader = null;
     const markersMedia = {
-      'a-marker-0': {vidSrc: './assets/videos/oro-intro.mp4?12345678910'},
-      'a-marker-1': {vidSrc: 'https://www.youtube.com/watch?v=zWBKP-DZNEc?12345678910'}
+      'a-marker-0': {vidSrc: '#oro-intro'},
+      'a-marker-1': {vidSrc: '#iniesta-gol'}
     };
 
     AFRAME.registerComponent('registerevents', {
@@ -52,10 +52,8 @@
           var markerId = marker.id;
           markerFound = true;
           console.log('markerFound', markerId);
-          const videoEl = document.getElementById("oro-intro");
-          videoEl.pause();
+          const videoEl = document.getElementById("a-video");
           videoEl.setAttribute('src', markersMedia[markerId].vidSrc);
-          videoEl.play();
         });
 
         marker.addEventListener('markerLost', function () {
@@ -156,6 +154,12 @@
         play="true"  
         src="./assets/videos/oro-intro.mp4?12345678910">
       </video>
+      <video id="iniesta-gol" autoplay loop controls="true" crossorigin="anonymous" playsinline webkit-playsinline
+        media
+        muted="true"
+        play="true"  
+        src="./assets/videos/iniesta-gol.mp4?12345678910">
+      </video>
     </a-assets>
 
     <a-marker id="a-marker-0" listener interaction hammer registerevents emitevents="true" cursor="rayOrigin: mouse"
@@ -166,7 +170,7 @@
       rotation="20 0 0" scale="0.5 0.5 0.5" visible="">
     </a-entity>
 
-    <a-video media src="#oro-intro" width="16" height="9" position="0 5 -30" rotation="0 0 0"
+    <a-video id="a-video" media src="#oro-intro" width="16" height="9" position="0 5 -30" rotation="0 0 0"
       scale=".6 .6 .6">
     </a-video>
 
