@@ -46,6 +46,9 @@
         marker.addEventListener('markerFound', function () {
           var markerId = marker.id;
           markerFound = true;
+          setTimeout(() => {
+            videoEl.play();
+          }, 1000)
           console.log('markerFound', markerId);
         });
 
@@ -77,10 +80,12 @@
     });
 
     // Media
+    let videoEl = null;
     AFRAME.registerComponent('vidhandler', {
       init: function () {
         this.toggle = false;
         this.vid = document.querySelector("#oro-intro");
+        videoEl = this.vid;
         this.vid.pause();
       },
       tick: function () {
