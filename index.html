@@ -30,7 +30,6 @@
   <script src="/aframe.js"></script>
   <script src="/script.js"></script>
   <script src="/js/app.js"></script>
-  <!-- <script src="/js/media.js"></script> -->
 
   <script>
 
@@ -76,6 +75,25 @@
         }
       }
     });
+
+    // Media
+    let videoEl = null;
+    const playVideo = (random) => {
+        setTimeout(() => {
+            videoEl.setAttribute("src", `./assets/videos/oro-intro.mp4?random=${random}`);
+            videoEl.setAttribute('autoplay', 'true');
+        }, 1000)    
+    }
+    AFRAME.registerComponent("media", {
+        init: function() {
+            videoEl = document.getElementById("oro-intro");
+            const random = Math.floor(Math.random() * 100);
+            playVideo(random)
+        },
+        tick: function() {
+          
+        }
+      });
   </script>
 
 </head>
@@ -145,7 +163,7 @@
       scale="0.5 0.5 0.5" visible="">
     </a-entity>
 
-    <a-video id="oro-intro" src="https://www.youtube.com/watch?v=zWBKP-DZNEc"
+    <a-video id="oro-intro" src=""
       autoplay
       loop="true"
       width="16" height="9" 
