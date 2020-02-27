@@ -62,7 +62,7 @@ AFRAME.registerComponent("listener2", {
 
 AFRAME.registerComponent("hammer", {
   init: function() {
-    var element = document.querySelector("body");
+    var element = document.querySelector("a-scene");
     this.marker = document.querySelector("a-marker");
     var model = document.querySelector("#target");
     var hammertime = new Hammer(element);

@@ -6,6 +6,9 @@
     AR Demo
   </title>
 
+  <style>
+  </style>
+
   <meta name="description" content="balondioro">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
@@ -14,6 +17,12 @@
   <link rel="stylesheet" href="/css/flexboxgrid.min.css">
   <link rel="stylesheet" type="text/css" href="/css/animate.css">
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer@0.3.1/dist/model-viewer.js">
+  </script>
+
+  <script nomodule src="https://unpkg.com/@google/model-viewer@0.3.1/dist/model-viewer-legacy.js">
+  </script>
 
   <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
   <script src="./js/hammer.js"></script>
@@ -55,14 +64,14 @@
       },
       tick: function () {
         if (markerFound && loader) {
-            setTimeout(() => {
-              loader.style.display = "none";
-            }, 200);
-          } else {
-            setTimeout(() => {
-              loader.style.display = "";
-            }, 200);
-          }
+          setTimeout(() => {
+            loader.style.display = "none";
+          }, 200);
+        } else {
+          setTimeout(() => {
+            loader.style.display = "";
+          }, 200);
+        }
       }
     });
   </script>
@@ -88,25 +97,19 @@
   </div>
 
   <footer>
-    <div class="row" style="min-height: 125px;">
-      <div class="col-xs-3">
-        <div id="controls-arrow-left" class="font-container" style="font-size: 3em;">
-          <i class="fas fa-chevron-circle-left"></i>
-        </div>
+    <model-viewer 
+      background-color="#293e77" 
+      ios-src="./assets/goldenboot/Botin de Oro Messi.usdz" 
+      src="./assets/locker-room/SM_LockerRoom.gltf"
+      alt="6to botin de oro de Messi" 
+      ar 
+      style="width: 100%; height: 100%;" camera-controls>
+    </model-viewer>
+    <!-- <div class="row">
+      <div class="col-xs-12">
+        
       </div>
-      <div class="col-xs-6">
-        <h2 id="model-info-title"></h2>
-        <p id="model-info-desc"></p>
-      </div>
-      <div class="col-xs-3">
-        <div id="controls-arrow-right" class="font-container" style="font-size: 3em;">
-          <i class="fas fa-chevron-circle-right"></i>
-        </div>
-      </div>
-    </div>
-    <div class="row" style="margin: 60px 20px;">
-      
-    </div>
+    </div> -->
   </footer>
 
   <!-- FC Barcelona Brand End -->
@@ -127,13 +130,13 @@
       scale="0.5 0.5 0.5" visible="">
     </a-entity>
 
-    <a-marker id="a-marker-1" listener2 interaction media hammer registerevents emitevents="true"
+    <!-- <a-marker id="a-marker-1" listener2 interaction media hammer registerevents emitevents="true"
       cursor="rayOrigin: mouse" type='pattern' url='./assets/pattern-image.patt'>
     </a-marker>
 
     <a-entity id="target2" gltf-model="soda-can" position="-0.14671 -1.37996 -8.10592" modelonload rotation="20 0 0"
       scale="5 5 5" visible="">
-    </a-entity>
+    </a-entity> -->
 
     <a-camera-static />
 

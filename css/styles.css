@@ -96,6 +96,11 @@ div.col-xs-3 {
     float: right;
 }
 
+.model-viewer {
+    margin: 5px;
+    height: 30vw;
+}
+
 @media screen and (max-width: 500px) {
     .header a {
         float: none;
@@ -146,4 +151,16 @@ div.col-xs-3 {
   100% {
     transform: rotate(0deg);
   }
+}
+
+
+.locker {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
