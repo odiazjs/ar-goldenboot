@@ -1,19 +1,30 @@
 let videoEl = null;
 
-const playVideo = (random) => {
+const playVideo = (random, src) => {
     setTimeout(() => {
-        videoEl.setAttribute("src", `./assets/videos/oro-intro.mp4?${random}`);
+        videoEl.setAttribute("src", `${src}?${random}`);
         videoEl.setAttribute('autoplay', 'true');
-    }, 1000)    
+    }, 500)
 }
 
 AFRAME.registerComponent("media", {
-    init: function() {
+    init: function () {
         videoEl = document.getElementById("oro-intro");
         const random = Math.floor(Math.random() * 10000);
-        playVideo(random)
+        playVideo(random, './assets/videos/oro-intro.mp4')
     },
-    tick: function() {
-      
+    tick: function () {
+
     }
-  });
+});
+
+AFRAME.registerComponent("media2", {
+    init: function () {
+        videoEl = document.getElementById("iniesta-gol");
+        const random = Math.floor(Math.random() * 10000);
+        playVideo(random, './assets/videos/iniesta-gol.mp4')
+    },
+    tick: function () {
+
+    }
+});
