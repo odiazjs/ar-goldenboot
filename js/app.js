@@ -1,7 +1,15 @@
 var stateInterval = null;
 
-function init () {
+function init() {
   hideDebugUI();
+  playMedia();
+}
+
+function playMedia() {
+  var v = document.querySelector('#oro-intro');
+  var v2 = document.querySelector('#iniesta-gol');
+  v.play();
+  v2.play();
 }
 
 function hideDebugUI() {
@@ -15,7 +23,7 @@ function hideDebugUI() {
   }
 }
 
-function checkDomState () {
+function checkDomState() {
   if (document.readyState === "complete" || document.readyState === "interactive") {
     init();
     clearInterval(stateInterval);
