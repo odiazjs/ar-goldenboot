@@ -59,6 +59,7 @@
         marker.addEventListener('markerLost', function () {
           var markerId = marker.id;
           markerFound = false;
+          pauseMedia();
           console.log('markerLost', markerId);
         });
       }
@@ -94,6 +95,12 @@
       var v2 = document.querySelector('#iniesta-gol');
       v.play();
       v2.play();
+    }
+    const pauseMedia = () => {
+      var v = document.querySelector('#oro-intro');
+      var v2 = document.querySelector('#iniesta-gol');
+      v.pause();
+      v2.pause();
     }
     window.addEventListener('click', function () {
       playMedia();
