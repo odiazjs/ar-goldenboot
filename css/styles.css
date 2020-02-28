@@ -188,6 +188,10 @@ i.fa-lock {
     z-index: 2000;
 }
 
+.model-title {
+    position: absolute; top: 2vw;
+}
+
 /* Card */
 card {
     width: 60vw;
@@ -207,9 +211,9 @@ card {
 }
 
  .swiper-container {
-      width: 100%;
-      height: 60vw;
-    }
+    width: 100%;
+    height: 50vw;
+}
 .swiper-slide {
     text-align: center;
     font-size: 18px;
