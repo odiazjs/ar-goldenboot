@@ -69,7 +69,7 @@ div.col-xs-3 {
 /* Header */
 .header {
     width: 100%;
-    height: 7%;
+    height: 15vw;
     position: fixed;
     top: 0;
     left: 0;
@@ -79,7 +79,7 @@ div.col-xs-3 {
 
 .header a {
     float: left;
-    color: #e2b706;
+    color: snow;
     text-align: center;
     padding: 12px;
     text-decoration: none;
