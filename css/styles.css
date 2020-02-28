@@ -164,3 +164,23 @@ div.col-xs-3 {
     justify-content: center;
     box-sizing: border-box;
 }
+
+img.lock {
+    padding-bottom: 2vw;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    left: 15vw;
+}
+
+.fa-lock {
+    color: #e2b706 !important;
+}
+
+i.fa-lock {
+    font-size: 1em;
+    display: block;
+    position: relative;
+    left: 15vw;
+}
