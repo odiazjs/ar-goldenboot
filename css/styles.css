@@ -42,7 +42,7 @@ footer {
     bottom: 0;
     left: 0;
     z-index: 3000;
-    background-color: transparent;
+    background-color: #293e77;
 }
 
 #controls {
@@ -171,7 +171,8 @@ img.lock {
     align-items: center;
     align-content: center;
     position: relative;
-    left: 15vw;
+    bottom: 15vw;
+    width: 40vw;
 }
 
 .fa-lock {
@@ -179,10 +180,12 @@ img.lock {
 }
 
 i.fa-lock {
-    font-size: 1em;
+    font-size: 2.5em;
     display: block;
     position: relative;
-    left: 15vw;
+    top: 15vw;
+    opacity: 0.8;
+    z-index: 2000;
 }
 
 /* Card */
@@ -194,6 +197,14 @@ card {
 }
 
 /* Swipper */
+
+.swiper-button-prev {
+    color: snow !important;
+}
+
+.swiper-button-next {
+    color: snow !important;
+}
 
  .swiper-container {
       width: 100%;

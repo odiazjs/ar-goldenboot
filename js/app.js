@@ -1,7 +1,7 @@
 var stateInterval = null;
 
 function init() {
-  hideDebugUI();
+  //hideDebugUI();
 }
 
 function hideDebugUI() {
@@ -24,9 +24,9 @@ function checkDomState() {
 
 function docReady() {
   if (document.readyState === "loading") {
-    stateInterval = setInterval(checkDomState, 500);
+    stateInterval = setInterval(checkDomState, 2000);
   } else if (document.readyState === "complete" || document.readyState === "interactive") {
-    stateInterval = setInterval(checkDomState, 500);
+    stateInterval = setInterval(checkDomState, 2000);
   }
 }
 
