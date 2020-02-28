@@ -54,13 +54,14 @@
           console.log('markerFound', markerId);
           const videoEl = document.getElementById("a-video");
           videoEl.setAttribute('src', markersMedia[markerId].vidSrc);
+          playMedia();
         });
 
         marker.addEventListener('markerLost', function () {
           var markerId = marker.id;
           markerFound = false;
-          pauseMedia();
           console.log('markerLost', markerId);
+          pauseMedia();
         });
       }
     });
@@ -69,9 +70,7 @@
         loader = document.querySelector("#spinner");
         this.el.addEventListener('model-loaded', e => {
           if (markerFound) {
-            setTimeout(() => {
-              playMedia();
-            })
+            playMedia();
           }
         })
       },
@@ -79,11 +78,11 @@
         if (markerFound && loader) {
           setTimeout(() => {
             loader.style.display = "none";
-          }, 5);
+          });
         } else {
           setTimeout(() => {
             loader.style.display = "";
-          }, 5);
+          });
         }
       }
     });
