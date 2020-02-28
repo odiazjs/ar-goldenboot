@@ -24,9 +24,9 @@ function checkDomState() {
 
 function docReady() {
   if (document.readyState === "loading") {
-    stateInterval = setInterval(checkDomState, 1000);
+    stateInterval = setInterval(checkDomState, 500);
   } else if (document.readyState === "complete" || document.readyState === "interactive") {
-    stateInterval = setInterval(checkDomState, 1000);
+    stateInterval = setInterval(checkDomState, 500);
   }
 }
 
