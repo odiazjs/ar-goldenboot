@@ -2,14 +2,6 @@ var stateInterval = null;
 
 function init() {
   hideDebugUI();
-  playMedia();
-}
-
-function playMedia() {
-  var v = document.querySelector('#oro-intro');
-  var v2 = document.querySelector('#iniesta-gol');
-  v.play();
-  v2.play();
 }
 
 function hideDebugUI() {

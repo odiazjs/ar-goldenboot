@@ -68,6 +68,11 @@
         loader = document.querySelector("#spinner");
         this.el.addEventListener('model-loaded', e => {
           console.log('loaded !!!!!!! ');
+          if (markerFound) {
+            setTimeout(() => {
+              playMedia();
+            }, 500)
+          }
         })
       },
       tick: function () {
@@ -84,11 +89,14 @@
     });
 
     // Media
-    window.addEventListener('click', function () {
+    const playMedia = () => {
       var v = document.querySelector('#oro-intro');
       var v2 = document.querySelector('#iniesta-gol');
       v.play();
       v2.play();
+    }
+    window.addEventListener('click', function () {
+      playMedia();
     });
 
   </script>
