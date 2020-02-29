@@ -1,0 +1,226 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.0.5",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                1
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Torso"
+        },
+        {
+            "mesh" : 1,
+            "name" : "Camisola_Low"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "White",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 1
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "M_Camisola",
+            "normalTexture" : {
+                "index" : 0,
+                "texCoord" : 0
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 1
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Torso",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        },
+        {
+            "name" : "Camisola_Low",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "indices" : 7,
+                    "material" : 1
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "source" : 0
+        },
+        {
+            "source" : 1
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "NM_Camisola",
+            "uri" : "NM_Camisola.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "T_Camisola",
+            "uri" : "T_Camisola.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 1013,
+            "max" : [
+                0.11697735637426376,
+                0.9969728589057922,
+                0.15109294652938843
+            ],
+            "min" : [
+                -0.13409346342086792,
+                0.6459960341453552,
+                -0.09463097155094147
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 1013,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 1013,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 3270,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 21000,
+            "max" : [
+                0.37654075026512146,
+                0.8199222683906555,
+                0.16241443157196045
+            ],
+            "min" : [
+                -0.3809497058391571,
+                -0.00234278105199337,
+                -0.1333392858505249
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 21000,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 21000,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5123,
+            "count" : 98364,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 12156,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 12156,
+            "byteOffset" : 12156
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 8104,
+            "byteOffset" : 24312
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 6540,
+            "byteOffset" : 32416
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 252000,
+            "byteOffset" : 38956
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 252000,
+            "byteOffset" : 290956
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 168000,
+            "byteOffset" : 542956
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 196728,
+            "byteOffset" : 710956
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 907684,
+            "uri" : "Camisola Cryuff.bin"
+        }
+    ]
+}
