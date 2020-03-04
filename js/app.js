@@ -1,7 +1,12 @@
 var stateInterval = null;
 
 function init() {
-  //hideDebugUI();
+  // Get Query Params
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get('token');
+  const airplaneMode = urlParams.get('airplane_mode');
+  console('token is - ', token)
+  console('airplane_mode is - ', airplaneMode)
 }
 
 function hideDebugUI() {
@@ -24,9 +29,9 @@ function checkDomState() {
 
 function docReady() {
   if (document.readyState === "loading") {
-    stateInterval = setInterval(checkDomState, 2000);
+    stateInterval = setInterval(checkDomState, 250);
   } else if (document.readyState === "complete" || document.readyState === "interactive") {
-    stateInterval = setInterval(checkDomState, 2000);
+    stateInterval = setInterval(checkDomState, 250);
   }
 }
 

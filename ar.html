@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    Barcelona AR Experience
+  </title>
+
+  <meta name="description" content="balondioro">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/flexboxgrid.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+  <!-- AFRAME JS -->
+  <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+  <script src="./aframe.js"></script>
+
+  <!-- Swiper JS -->
+  <script src="./js/swiper.min.js"></script>
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer@0.3.1/dist/model-viewer.js">
+  </script>
+
+  <script nomodule src="https://unpkg.com/@google/model-viewer@0.3.1/dist/model-viewer-legacy.js">
+  </script>
+
+  <script src="./js/hammer.js"></script>
+  <script src="/script.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/media.js"></script>
+
+  <script>
+
+    let markerFound = false;
+    let loader = null;
+    const markersMedia = {
+      'a-marker-0': { vidSrc: '#oro-intro' },
+      'a-marker-1': { vidSrc: '#iniesta-gol' }
+    };
+
+    AFRAME.registerComponent('registerevents', {
+      init: function () {
+        var marker = this.el;
+
+        // Make the element emit events when found and when lost.
+        marker.setAttribute('emitevents', 'true');
+
+        marker.addEventListener('markerFound', function () {
+          var markerId = marker.id;
+          markerFound = true;
+          console.log('markerFound', markerId);
+          const videoEl = document.getElementById("a-video");
+          videoEl.setAttribute('src', markersMedia[markerId].vidSrc);
+          playMedia();
+        });
+
+        marker.addEventListener('markerLost', function () {
+          var markerId = marker.id;
+          markerFound = false;
+          console.log('markerLost', markerId);
+          pauseMedia();
+        });
+      }
+    });
+    AFRAME.registerComponent('modelonload', {
+      init: function () {
+        loader = document.querySelector("#spinner");
+        this.el.addEventListener('model-loaded', e => {
+          if (markerFound) {
+            playMedia();
+          }
+        })
+      },
+      tick: function () {
+        if (markerFound && loader) {
+          setTimeout(() => {
+            loader.style.display = "none";
+          });
+        } else {
+          setTimeout(() => {
+            loader.style.display = "";
+          });
+        }
+      }
+    });
+
+    // Media
+    const playMedia = () => {
+      var v = document.querySelector('#oro-intro');
+      var v2 = document.querySelector('#iniesta-gol');
+      v.play();
+      v2.play();
+    }
+    const pauseMedia = () => {
+      var v = document.querySelector('#oro-intro');
+      var v2 = document.querySelector('#iniesta-gol');
+      v.pause();
+      v2.pause();
+    }
+    window.addEventListener('click', function () {
+    
+    });
+
+  </script>
+
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+
+  <div id="spinner" class="loading">
+    <div class="loader"></div>
+  </div>
+
+  <!-- FC Barcelona Brand Start -->
+  <div class="header">
+    <div class="row" style="margin: 4px;">
+      <div class="col-xs-1">
+        <img class="logo" src="./assets/fcblogo.png" alt="fcb logo" />
+      </div>
+      <div class="col-xs-11">
+        <a href="#" class="title" style="margin: 0vw 5vw">FC BARCELONA AR EXPERIENCE</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="model-title">
+            <h3>Bota de Oro 2018-2019</h3>
+          </div>
+          <div key="1">
+            <i class="fas fa-lock"></i>
+            <img class="lock" src="./assets/balon-oro-locked.png" alt="fcb logo" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="model-title">
+            <h3>Bota Iniesta 2009 vs Chelsea</h3>
+          </div>
+          <div key="1">
+            <i class="fas fa-lock"></i>
+            <img class="lock" src="./assets/iniesta-boot-locked.png" alt="fcb logo" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div key="1">
+            <i class="fas fa-lock"></i>
+            <img class="lock" src="./assets/balon-oro-locked.png" alt="fcb logo" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div key="1">
+            <i class="fas fa-lock"></i>
+            <img class="lock" src="./assets/iniesta-boot-locked.png" alt="fcb logo" />
+          </div>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </footer>
+
+  <!-- FC Barcelona Brand End -->
+
+  <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'
+    renderer="colorManagement: true; physicallyCorrectLights: true; logarithmicDepthBuffer: true; sortObjects: false;">
+
+    <a-assets>
+      <a-entity src="/assets/botin-oro/Botin de Oro.gltf" id="golden-boot"></a-entity>
+      <a-entity src="/assets/iniesta/Zapato Iniesta.gltf" id="iniesta-boot"></a-entity>
+      <a-entity src="/assets/shirt/Camisola Cryuff/gltf" id="cryuff-shirt"></a-entity>
+      <video id="oro-intro" autoplay loop controls="true" crossorigin="anonymous" playsinline webkit-playsinline media
+        muted="true" play="true" src="./assets/videos/botin-oro-messi-low-res.mp4?12345678910">
+      </video>
+      <video id="iniesta-gol" autoplay loop controls="true" crossorigin="anonymous" playsinline webkit-playsinline
+        media2 muted="true" play="true" src="./assets/videos/Gol de Iniesta.mp4?12345678910">
+      </video>
+      <video id="cruyff-goals" autoplay loop controls="true" crossorigin="anonymous" playsinline webkit-playsinline
+        media2 muted="true" play="true" src="./assets/videos/cruyff-goals.mp4?12345678910">
+      </video>
+    </a-assets>
+
+    <a-video id="a-video" media media2 src="#oro-intro" width="16" height="9" position="0 5 -30" rotation="0 0 0"
+      scale=".6 .6 .6">
+    </a-video>
+
+    <a-marker id="a-marker-0" listener interaction hammer registerevents emitevents="true" cursor="rayOrigin: mouse"
+      type='pattern' url='./assets/markers/pattern-goldenboot.patt'>
+    </a-marker>
+
+    <a-entity id="target" gltf-model="#golden-boot" position="-0.14671 -1.37996 -8.10592" modelonload rotation="20 0 0"
+      scale=".5 .5 .5" visible="">
+    </a-entity>
+
+    <a-marker id="a-marker-1" listener2 interaction hammer2 registerevents emitevents="true" cursor="rayOrigin: mouse"
+      type='pattern' url='./assets/markers/pattern-iniesta-marker.patt'>
+    </a-marker>
+
+    <a-entity id="target2" gltf-model="#iniesta-boot" position="-0.14671 -1.37996 -8.10592" modelonload
+      rotation="20 0 0" scale="1 1 1" visible="">
+    </a-entity>
+
+    <a-marker id="a-marker-2" listener3 interaction hammer3 registerevents emitevents="true" cursor="rayOrigin: mouse"
+      type='pattern' url='./assets/markers/pattern-cruyff.patt'>
+    </a-marker>
+
+    <a-entity id="target3" gltf-model="#cruyff-shirt" position="-0.14671 -1.37996 -8.10592" modelonload
+      rotation="20 0 0" scale="1 1 1" visible="">
+    </a-entity>
+
+    <a-camera-static />
+
+    <a-light id="spot-light" type="spot" color="white"
+      light="type: point; color: #ffffff; intensity: 20; penumbra: 1; castShadow: true; shadowBias: 1"
+      position="-0.09255 1.68958 -4.47987" rotation="">
+    </a-light>
+
+  </a-scene>
+
+  <script>
+    //Swipper
+    setTimeout(() => {
+      var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    })
+  </script>
+</body>
+
+</html>
