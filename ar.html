@@ -61,8 +61,8 @@
     // API props
     let apiUrl = 'https://api.codetenango.com/api/v1';
     //let apiUrl = 'http://localhost:8080/api/v1';
-    let getUnlockablesUrl = `${apiUrl}/unlockable`;
-    let createUserUnlockableUrl = (userId) => `${apiUrl}/user/${userId}/unlockable`;
+    let getUnlockablesUrl = `${apiUrl}/unlockables`;
+    let createUserUnlockableUrl = (userId) => `${apiUrl}/user/${userId}/unlockables`;
     let getUsersUnlockablesUrl = (userId) => `${apiUrl}/users/${userId}/unlockables`;
 
     AFRAME.registerComponent('registerevents', {
@@ -275,13 +275,17 @@
       });
 
       // Get All Unlockables
-      // fetch(getUnlockablesUrl, {
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     'Authorization': `Bearer`
-      //   },
-      //   referrer: 'no-referrer'
-      // })
+      fetch(getUnlockablesUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        referrer: 'no-referrer'
+      })
+      .then(({ data }) => {
+        unlockables = data
+      })
+
     }, 1000)
   </script>
 </body>
