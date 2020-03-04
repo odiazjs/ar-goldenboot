@@ -78,7 +78,7 @@
     <model-viewer background-color="#293e77" preload src="./assets/botin-oro/Botin de Oro.gltf"
       alt="6to botin de oro de Messi" ar ar-scale="auto" mode="ar_preferred" unstable-webxr camera-controls>
       <a href="intent://raw.githubusercontent.com/odiazjs/ar-goldenboot/google-3d/assets/botin-oro/Botin%20de%20Oro.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"
-        slot="ar-button" class="model-a">
+        class="model-a">
         Ver en 3D
       </a>
     </model-viewer>
@@ -106,7 +106,9 @@
 
 
   <script>
-
+    setTimeout(() => {
+      document.querySelector('model-viewer').focus()
+    }, 500)
   </script>
 </body>
 
