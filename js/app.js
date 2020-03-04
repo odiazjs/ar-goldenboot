@@ -1,12 +1,7 @@
 var stateInterval = null;
 
 function init() {
-  // Get Query Params
-  const urlParams = new URLSearchParams(window.location.search);
-  const token = urlParams.get('token');
-  const airplaneMode = urlParams.get('airplane_mode');
-  console('token is - ', token)
-  console('airplane_mode is - ', airplaneMode)
+  
 }
 
 function hideDebugUI() {
