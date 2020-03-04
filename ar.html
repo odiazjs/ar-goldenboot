@@ -206,7 +206,7 @@
     renderer="colorManagement: true; physicallyCorrectLights: true; logarithmicDepthBuffer: true; sortObjects: false;">
 
     <a-assets>
-      <a-entity src="/assets/botin-oro/Botin de Oro.gltf" id="golden-boot"></a-entity>
+      <a-entity src="https://d2tdxa2umyosqg.cloudfront.net/Botin de Oro.gltf" id="golden-boot"></a-entity>
       <a-entity src="/assets/iniesta/Zapato Iniesta.gltf" id="iniesta-boot"></a-entity>
       <a-entity src="/assets/shirt/Camisola Cryuff.gltf" id="cryuff-shirt"></a-entity>
       <video id="oro-intro" autoplay loop controls="true" crossorigin="anonymous" playsinline webkit-playsinline media
@@ -221,7 +221,7 @@
     </a-assets>
 
     <a-video id="a-video" media media2 src="#oro-intro" width="16" height="9" position="0 5 -30" rotation="0 0 0"
-      scale=".8 .8 .8">
+      scale=".5 .5 .5">
     </a-video>
 
     <a-marker id="a-marker-1" listener interaction hammer registerevents emitevents="true" cursor="rayOrigin: mouse"
@@ -229,7 +229,7 @@
     </a-marker>
 
     <a-entity id="target" gltf-model="#golden-boot" position="-0.14671 -1.37996 -8.10592" modelonload rotation="20 0 0"
-      scale=".3 .3 .3" visible="">
+      scale=".1 .1 .1" visible="">
     </a-entity>
 
     <a-marker id="a-marker-2" listener2 interaction hammer2 registerevents emitevents="true" cursor="rayOrigin: mouse"
@@ -237,7 +237,7 @@
     </a-marker>
 
     <a-entity id="target2" gltf-model="#iniesta-boot" position="-0.14671 -1.37996 -8.10592" modelonload
-      rotation="20 0 0" scale=".6 .6 .6" visible="">
+      rotation="20 0 0" scale=".3 .3 .3" visible="">
     </a-entity>
 
     <a-marker id="a-marker-3" listener3 interaction hammer3 registerevents emitevents="true" cursor="rayOrigin: mouse"
@@ -245,7 +245,7 @@
     </a-marker>
 
     <a-entity id="target3" gltf-model="#cryuff-shirt" position="-0.14671 -1.37996 -8.10592" modelonload
-      rotation="20 0 0" scale="1.2 1.2 1.2" visible="">
+      rotation="0 0 0" scale="1 1 1" visible="">
     </a-entity>
 
     <a-camera-static />
