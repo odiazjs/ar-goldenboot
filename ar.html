@@ -58,7 +58,6 @@
     let unlockables = [];
 
     // API props
-    let airplaneMode = false;
     let apiUrl = 'https://api.codetenango.com/api/v1';
     let getUnlockablesUrl = `${apiUrl}/unlockable`;
     let createUserUnlockableUrl = (userId) => `${apiUrl}/user/${userId}/unlockable`;
@@ -281,7 +280,7 @@
         },
         referrer: 'no-referrer'
       })
-    })
+    }, 1000)
   </script>
 </body>
 
