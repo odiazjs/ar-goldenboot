@@ -46,6 +46,7 @@
       return JSON.parse(jsonPayload);
     };
 
+    let swiper = {};
     let markerFound = false;
     let loader = null;
     const markersMedia = {
@@ -59,11 +60,19 @@
     let unlockables = [];
 
     // API props
-    let apiUrl = 'https://api.codetenango.com/api/v1';
-    //let apiUrl = 'http://localhost:8080/api/v1';
+    //let apiUrl = 'https://api.codetenango.com/api/v1';
+    let apiUrl = 'http://localhost:8080/api/v1';
     let getUnlockablesUrl = `${apiUrl}/unlockables`;
     let createUserUnlockableUrl = (userId) => `${apiUrl}/user/${userId}/unlockables`;
     let getUsersUnlockablesUrl = (userId) => `${apiUrl}/users/${userId}/unlockables`;
+
+
+    // Unlock item
+    const unlockedImgSrcs = {
+      'a-marker-1': { src: 'balon-oro-unlocked.png', unlocked: false },
+      'a-marker-2': { src: 'iniesta-boot-unlocked.png', unlocked: false },
+      'a-marker-3': { src: 'cruyff-unlocked.png', unlocked: false },
+    }
 
     AFRAME.registerComponent('registerevents', {
       init: function () {
@@ -77,8 +86,32 @@
           markerFound = true;
           console.log('markerFound', markerId);
           const videoEl = document.getElementById("a-video");
-          videoEl.setAttribute('src', markersMedia[markerId].vidSrc);
+          const random = Math.floor(Math.random() * 10000);
+          videoEl.setAttribute('src', `${markersMedia[markerId].vidSrc}?${random}`);
           playMedia();
+
+          const item = unlockedImgSrcs[markerId];
+
+          const markerIndex = markerId.split('-')[2];
+          const activeIndex = markerIndex;
+          swiper.slideTo(activeIndex);
+
+          if (item.unlocked) {
+            console.log('item already unlocked - ', item);
+            return;
+          }
+
+          setTimeout(() => {
+            const unlockable = document.querySelector(`div[unlockable=${markerId}] img`);
+            const lock = document.querySelector(`div[unlockable=${markerId}] i`);
+            const imgSrc = unlockable.getAttribute("src");
+            unlockable.style.marginTop = '6em';
+            lock.style.display = 'none';
+            console.log('marker unlock - ', unlockable);
+            unlockable.setAttribute("src", `/assets/${item.src}`);
+            item.unlocked = true;
+          }, 1000)
+
         });
 
         marker.addEventListener('markerLost', function () {
@@ -165,30 +198,27 @@
           <div class="model-title">
             <h3>Bota de Oro 2018-2019</h3>
           </div>
-          <div key="1">
+          <div unlockable="a-marker-1">
             <i class="fas fa-lock"></i>
-            <img class="lock" src="./assets/balon-oro-locked.png" alt="fcb logo" />
+            <img class="lock" src="./assets/balon-oro-locked2.png" alt="fcb logo" />
           </div>
         </div>
         <div class="swiper-slide">
           <div class="model-title">
             <h3>Bota Iniesta 2009 vs Chelsea</h3>
           </div>
-          <div key="1">
+          <div unlockable="a-marker-2">
             <i class="fas fa-lock"></i>
             <img class="lock" src="./assets/iniesta-boot-locked.png" alt="fcb logo" />
           </div>
         </div>
         <div class="swiper-slide">
-          <div key="1">
-            <i class="fas fa-lock"></i>
-            <img class="lock" src="./assets/balon-oro-locked.png" alt="fcb logo" />
+          <div class="model-title">
+            <h3>Camisola de Cruyff</h3>
           </div>
-        </div>
-        <div class="swiper-slide">
-          <div key="1">
+          <div unlockable="a-marker-3">
             <i class="fas fa-lock"></i>
-            <img class="lock" src="./assets/iniesta-boot-locked.png" alt="fcb logo" />
+            <img class="lock" src="./assets/cruyff-locked.png" alt="fcb logo" />
           </div>
         </div>
       </div>
@@ -207,8 +237,8 @@
 
     <a-assets>
       <a-entity src="https://d2tdxa2umyosqg.cloudfront.net/Botin de Oro.gltf" id="golden-boot"></a-entity>
-      <a-entity src="/assets/iniesta/Zapato Iniesta.gltf" id="iniesta-boot"></a-entity>
-      <a-entity src="/assets/shirt/Camisola Cryuff.gltf" id="cryuff-shirt"></a-entity>
+      <a-entity src="https://d2tdxa2umyosqg.cloudfront.net/Zapato Iniesta.gltf" id="iniesta-boot"></a-entity>
+      <a-entity src="https://d2tdxa2umyosqg.cloudfront.net/Camisola Cryuff.gltf" id="cryuff-shirt"></a-entity>
       <video id="oro-intro" autoplay loop controls="true" crossorigin="anonymous" playsinline webkit-playsinline media
         muted="true" play="true" src="./assets/videos/botin-oro-messi-low-res.mp4?12345678910">
       </video>
@@ -244,8 +274,8 @@
       type='pattern' url='./assets/markers/pattern-cruyff.patt'>
     </a-marker>
 
-    <a-entity id="target3" gltf-model="#cryuff-shirt" position="-0.14671 -1.37996 -8.10592" modelonload
-      rotation="0 0 0" scale="1 1 1" visible="">
+    <a-entity id="target3" gltf-model="#cryuff-shirt" position="-0.14671 -1.37996 -8.10592" modelonload rotation="0 0 0"
+      scale="1 1 1" visible="">
     </a-entity>
 
     <a-camera-static />
@@ -260,7 +290,7 @@
   <script>
     //Swipper
     setTimeout(() => {
-      var swiper = new Swiper('.swiper-container', {
+      swiper = new Swiper('.swiper-container', {
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,
@@ -274,6 +304,20 @@
         },
       });
 
+      swiper.on('slideChange', function (ev) {
+        const markerId = swiper.slides[swiper.activeIndex].children[1].getAttribute('unlockable');
+        const lock = swiper.slides[swiper.activeIndex].children[1].children[0];
+        let imgSrc = swiper.slides[swiper.activeIndex].children[1].children[1].src;
+        console.log('slide changed', imgSrc);
+        const item = unlockedImgSrcs[markerId];
+        if (item.unlocked){
+          const el = swiper.slides[swiper.activeIndex].children[1].children[1];
+          lock.style.display = 'none';
+          el.style.marginTop = '6em';
+          el.src = `/assets/${item.src}`;
+        }
+      });
+
       // Get All Unlockables
       fetch(getUnlockablesUrl, {
         headers: {
@@ -282,9 +326,12 @@
         },
         referrer: 'no-referrer'
       })
-      .then(({ data }) => {
-        unlockables = data
-      })
+        .then((response) => {
+          response.json()
+            .then(({ data }) => {
+              unlockables = [...data]
+            })
+        })
 
     }, 1000)
   </script>

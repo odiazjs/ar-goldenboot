@@ -6,8 +6,8 @@ function init() {
     initAnimation();
     document.querySelector('#redirect').addEventListener('click', (ev) => {
         ev.preventDefault();
-        window.location = 'https://api.codetenango.com/api/v1/auth/facebook';
-        //window.location = 'http://localhost:8080/api/v1/auth/facebook';
+        //window.location = 'https://api.codetenango.com/api/v1/auth/facebook';
+        window.location = 'http://localhost:8080/api/v1/auth/facebook';
     })
 }
 
