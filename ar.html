@@ -71,15 +71,15 @@
         <a href="#" class="title" style="margin: 0vw 5vw">EXPERIENCIA AR</a>
       </div>
       <div class="col-xs-1">
-        <a href="intent://raw.githubusercontent.com/odiazjs/ar-goldenboot/google-3d/assets/botin-oro/Botin%20de%20Oro.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"
+        <a raw id="a-goldenboot" href="intent://raw.githubusercontent.com/odiazjs/ar-goldenboot/google-3d/assets/botin-oro/Botin%20de%20Oro.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"
           class="model-a">
           <i class="fa fa-camera" aria-hidden="true"></i> FOTO 3D
         </a>
-        <a href="intent://raw.githubusercontent.com/odiazjs/ar-goldenboot/google-3d/assets/iniesta/Zapato%20Iniesta.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"
+        <a raw id="a-iniesta-boot" style="display: none" href="intent://raw.githubusercontent.com/odiazjs/ar-goldenboot/google-3d/assets/iniesta/Zapato%20Iniesta.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"
           class="model-a">
           <i class="fa fa-camera" aria-hidden="true"></i> FOTO 3D
         </a>
-        <a href="intent://raw.githubusercontent.com/odiazjs/ar-goldenboot/google-3d/assets/shirt/Camisola%20Cryuff.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"
+        <a raw id="a-cruyff-shirt" style="display: none" href="intent://raw.githubusercontent.com/odiazjs/ar-goldenboot/google-3d/assets/shirt/Camisola%20Cryuff.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"
           class="model-a">
           <i class="fa fa-camera" aria-hidden="true"></i> FOTO 3D
         </a>
@@ -150,13 +150,20 @@
     models.forEach((el) => {
       el.addEventListener('click', (ev) => {
 
+        const aHrefs = document.querySelectorAll('a[raw]');
+        aHrefs.forEach((a) => {
+          a.style.display = 'none'
+        })
+
         const d3Models = document.querySelectorAll('model-viewer');
         d3Models.forEach((element) => {
           element.style.display = 'none';
         })
 
         const mvEl = document.querySelector(`#mv-${ev.target.id}`);
+        const aHref = document.querySelector(`#a-${ev.target.id}`);
         mvEl.style.display = 'block';
+        aHref.style.display = 'block';
         mvEl.focus();
 
         modelImages.forEach((model) => {
