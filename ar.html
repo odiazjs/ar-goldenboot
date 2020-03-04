@@ -75,13 +75,27 @@
           class="model-a">
           <i class="fa fa-camera" aria-hidden="true"></i> FOTO 3D
         </a>
+        <a href="intent://raw.githubusercontent.com/odiazjs/ar-goldenboot/google-3d/assets/botin-oro/Botin%20de%20Oro.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"
+          class="model-a">
+          <i class="fa fa-camera" aria-hidden="true"></i> FOTO 3D
+        </a>
+        <a href="intent://raw.githubusercontent.com/odiazjs/ar-goldenboot/google-3d/assets/botin-oro/Botin%20de%20Oro.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"
+          class="model-a">
+          <i class="fa fa-camera" aria-hidden="true"></i> FOTO 3D
+        </a>
       </div>
     </div>
   </div>
 
   <!-- 3D Google Models Viewer-->
   <div class="main">
-    <model-viewer background-color="#293e77" preload src="./assets/botin-oro/Botin de Oro.gltf"
+    <model-viewer id="mv-goldenboot" background-color="#293e77" preload src="./assets/botin-oro/Botin de Oro.gltf"
+      alt="6to botin de oro de Messi" ar ar-scale="auto" mode="ar_preferred" unstable-webxr camera-controls>
+    </model-viewer>
+    <model-viewer id="mv-iniesta-boot" style="display: none" background-color="#293e77" preload src="./assets/iniesta/Zapato Iniesta.gltf"
+      alt="6to botin de oro de Messi" ar ar-scale="auto" mode="ar_preferred" unstable-webxr camera-controls>
+    </model-viewer>
+    <model-viewer id="mv-cruyff-shirt" style="display: none" background-color="#293e77" preload src="./assets/shirt/Camisola Cryuff.gltf"
       alt="6to botin de oro de Messi" ar ar-scale="auto" mode="ar_preferred" unstable-webxr camera-controls>
     </model-viewer>
   </div>
@@ -89,18 +103,18 @@
   <footer>
     <div class="row">
       <div class="col-xs-4 col-sm-6 col-md-8 col-lg-4">
-        <div class="item-container">
-          <img src="assets/balon-oro-unlocked.png" width="75" alt="botin oro" />
+        <div model class="item-container">
+          <img id="goldenboot" src="assets/balon-oro-unlocked.png" width="75" alt="botin oro" />
         </div>
       </div>
       <div class="col-xs-4 col-sm-6 col-md-8 col-lg-4">
-        <div class="item-container">
-          <img src="assets/iniesta-boot-unlocked.png" width="75" alt="botin oro" />
+        <div model class="item-container">
+          <img id="iniesta-boot" src="assets/iniesta-boot-unlocked.png" width="75" alt="botin oro" />
         </div>
       </div>
       <div class="col-xs-4 col-sm-3 col-md-2 col-lg-4">
-        <div class="item-container">
-          <img src="assets/cruyff-unlocked.png" width="75" alt="botin oro" />
+        <div model class="item-container">
+          <img id="cruyff-shirt" src="assets/cruyff-unlocked.png" width="75" alt="botin oro" />
         </div>
       </div>
     </div>
@@ -108,9 +122,54 @@
 
 
   <script>
+    function animateCSS(element, animationName, callback) {
+      const node = document.querySelector(element)
+      node.classList.add('animated', animationName)
+
+      function handleAnimationEnd() {
+        node.classList.remove('animated', animationName)
+        node.removeEventListener('animationend', handleAnimationEnd)
+
+        if (typeof callback === 'function') callback()
+      }
+
+      node.addEventListener('animationend', handleAnimationEnd)
+    }
+
     setTimeout(() => {
       document.querySelector('model-viewer').focus()
     }, 500)
+
+    const goldenboot = document.querySelector('#goldenboot');
+    const iniestaBoot = document.querySelector('#iniesta-boot');
+    const cruyffShirt = document.querySelector('#cruyff-shirt');
+
+    const models = document.querySelectorAll('div[model]');
+    const modelImages = document.querySelectorAll('div[model] img');
+
+    models.forEach((el) => {
+      el.addEventListener('click', (ev) => {
+
+        const d3Models = document.querySelectorAll('model-viewer');
+        d3Models.forEach((element) => {
+          element.style.display = 'none';
+        })
+
+        const mvEl = document.querySelector(`#mv-${ev.target.id}`);
+        mvEl.style.display = 'block';
+        mvEl.focus();
+
+        modelImages.forEach((model) => {
+          model.width = 75;
+        })
+        const el = ev.target;
+        console.log(el);
+        animateCSS(`#${el.id}`, 'bounceOut', () => {
+          el.width = el.width * 1.5
+        })
+      })
+    })
+
   </script>
 </body>
 
