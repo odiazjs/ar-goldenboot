@@ -59,8 +59,8 @@
     let unlockables = [];
 
     // API props
-    //let apiUrl = 'https://api.codetenango.com/api/v1';
-    let apiUrl = 'http://localhost:8080/api/v1';
+    let apiUrl = 'https://api.codetenango.com/api/v1';
+    //let apiUrl = 'http://localhost:8080/api/v1';
     let getUnlockablesUrl = `${apiUrl}/unlockable`;
     let createUserUnlockableUrl = (userId) => `${apiUrl}/user/${userId}/unlockable`;
     let getUsersUnlockablesUrl = (userId) => `${apiUrl}/users/${userId}/unlockables`;
@@ -202,7 +202,7 @@
 
   <!-- FC Barcelona Brand End -->
 
-  <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'
+  <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;' loading-screen="dotsColor: white; backgroundColor: black"
     renderer="colorManagement: true; physicallyCorrectLights: true; logarithmicDepthBuffer: true; sortObjects: false;">
 
     <a-assets>
