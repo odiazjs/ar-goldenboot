@@ -6,8 +6,8 @@ function init() {
     initAnimation();
     document.querySelector('#redirect').addEventListener('click', (ev) => {
         ev.preventDefault();
-        window.location = 'https://api.codetenango.com/api/v1/auth/facebook';
-        //window.location = 'http://localhost:8080/api/v1/auth/facebook';
+        //window.location = 'https://api.codetenango.com/api/v1/auth/facebook';
+        window.location = 'http://localhost:8080/api/v1/auth/facebook';
     })
 }
 
@@ -24,7 +24,7 @@ function initAnimation() {
     Animate.animateCSS('#title', 'fadeInUpBig', () => {
         setTimeout(() => {
             setTimeout(() => {
-                document.querySelector('#title').innerHTML = 'PRESIONA COMENZAR Y PODRAS ESCANEAR LOS 4 CODIGOS DEL MUSEO';
+                document.querySelector('#title').innerHTML = 'PRESIONA COMENZAR Y PODRAS VER LOS 3 OBJETOS DEL MUSEO';
             }, 500)
             Animate.animateCSS('#title', 'fadeOutUpBig', () => {
                 document.querySelector('#ar').style.display = 'none';
