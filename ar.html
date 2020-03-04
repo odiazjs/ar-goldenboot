@@ -7,10 +7,11 @@
   </title>
 
   <style>
-    :host {
+    model-viewer {
       width: 100% !important;
       display: block;
       position: absolute !important;
+      height: -webkit-fill-available !important;
     }
 
     .item-container {
@@ -21,6 +22,17 @@
     .main {
       margin-top: 15vw;
       color: black;
+    }
+
+    .model-a {
+      background-color: goldenrod;
+      border: none;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      color: white;
+      text-decoration: none;
+      padding: 10px;
     }
   </style>
 
@@ -63,16 +75,11 @@
 
   <!-- 3D Google Models Viewer-->
   <div class="main">
-    <model-viewer background-color="#293e77" 
-      preload src="./assets/botin-oro/Botin de Oro.gltf" 
-      alt="6to botin de oro de Messi"
-      ar-scale="auto"
-      mode="ar_preferred"
-      unstable-webxr
-      camera-controls>
+    <model-viewer background-color="#293e77" preload src="./assets/botin-oro/Botin de Oro.gltf"
+      alt="6to botin de oro de Messi" ar ar-scale="auto" mode="ar_preferred" unstable-webxr camera-controls>
       <a href="intent://raw.githubusercontent.com/odiazjs/ar-goldenboot/google-3d/assets/botin-oro/Botin%20de%20Oro.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;"
-         slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px; ">
-          Ver en 3D
+        slot="ar-button" class="model-a">
+        Ver en 3D
       </a>
     </model-viewer>
   </div>
